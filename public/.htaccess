@@ -1,0 +1,20 @@
+# Ativar o mecanismo de reescrita do Apache
+RewriteEngine On
+ 
+# Definir caminho base (ajuste conforme necessário)
+RewriteBase /sistema-LivrariaBooksAndFun/public/
+ 
+# Redirecionar automaticamente para HTTPS (opcional, remova se não usar SSL)
+RewriteCond %{HTTP} off
+RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,L]
+ 
+# Bloquear acesso a arquivos sensíveis (.htaccess, .env, etc.)
+RewriteRule ^(.*/)?\.(htaccess|env|git|ini|log|sh|sql|bak)$ - [F,L]
+ 
+# Se a requisição for para um arquivo existente, permite o acesso
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+ 
+# Redirecionar todas as requisições para index.php (URLs amigáveis)
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
