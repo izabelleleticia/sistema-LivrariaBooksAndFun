@@ -37,6 +37,24 @@ class Rotas
             array_shift($url); // Remover a primeira posição da ARRAY
 
             $controladorAtual = ucfirst($url[0]) . 'Controller';
+            array_shift($url); 
+
+            if(isset($url[0]) && !empty($url)){
+                $acaoAtual = $url[0];
+                //var_dump('Nome da ação atual: ' . $acaoAtual);
+                array_shift($url);
+            }else{
+                $acaoAtual = 'index';
+                
+                // var_dump('Nome da ação atual: ' . $acaoAtual);
+            }
+
+            // Os parametros
+            // count - Conta todos os elementos de um array ou de um objeto
+            if(count($url) > 0){
+                //var_dump(count($url));
+                $parametro = $url;
+            }
         }
         else
         {
@@ -49,7 +67,7 @@ class Rotas
         //     $parametro = $url;
         // }
         //Verificar se o arquivo do CONTROLLER e a AÇÃO (metodo) existe
-        $acaoAtual = isset($url[1]) ? $url[1] : 'index';
+        // $acaoAtual = isset($url[1]) ? $url[1] : 'index';
 
 
         if(!file_exists('../app/controllers/'.$controladorAtual.'.php') || 

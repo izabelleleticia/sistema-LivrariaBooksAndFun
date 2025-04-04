@@ -52,11 +52,47 @@ header .left {
     justify-content: space-around;
 }
 
-.LogoNav img {
+.LogoNav .logoMenu {
     margin-top: -31px;
     height: 148px;
 }
-.LogoNav .cadastro{
+
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.LogoNav img {
+    height: 200px;
+}
+
+.LogoNav .Imagem {
+    margin-top: -60px;
+}
+
+.input-pesquisa {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 20px;
+    background: transparent;
+}
+
+.btn-pesquisa {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-pesquisa img {
+    height: 20px;
+}
+
+
+.LogoNav .cadastro {
     height: 40px;
     margin-top: -10px;
 }
@@ -357,7 +393,7 @@ nav ul li a {
 }
 
 .Recomendacoes {
-   justify-content: center;
+    justify-content: center;
     gap: 50px;
 }
 
@@ -536,12 +572,14 @@ nav ul li a {
     justify-content: center;
     align-items: center;
 }
-.formContato .mensagem p{
+
+.formContato .mensagem p {
     margin-top: 10px;
     color: #ffffff;
-    
+
 }
-.formContato .mensagem a{
+
+.formContato .mensagem a {
     text-decoration: none;
 }
 
@@ -641,7 +679,8 @@ nav ul li a {
     text-align: center;
 
 }
-.rodape .top{
+
+.rodape .top {
     height: 20px;
     background-color: #BB87E9;
     margin-top: -100px
@@ -706,6 +745,128 @@ nav ul li a {
     color: #ffffff;
 }
 
+/*Páginas Livro*/
+.Colunas {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-left: 100px;
+
+}
+
+.Colunas button {
+    display: flex;
+    align-items: center;
+    background-color: #8F5BBC;
+    color: white;
+    font-size: 20px;
+    font-family: 'interRegular';
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.Colunas .quantidade{
+    
+    font-size: 15px;
+}
+.botoes-1 .adicionar{
+    background-color: #8F5BBC;
+    color: white;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+    width: 180px;
+    height: 30px;
+
+
+
+
+}
+.botoes-1 .comprar{
+    background-color: #8F5BBC;
+    color: white;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+    width: 130px;
+    height: 30px;
+
+
+}
+.botoes-1{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+    padding-right: 100px;
+}
+
+
+
+
+.imgInfo {
+    text-align: center;
+}
+
+.imgInfo h3 {
+    margin-top: 10px;
+}
+
+.imgInfo button {
+    margin-top: 10px;
+}
+
+.Colunas .imgInfo img {
+    margin-top: 50px;
+    height: 250px;
+    border-radius: 10px;
+
+}
+
+.Colunas h1 {
+    margin-top: 20px;
+    font-size: 20pt;
+    padding-left: 50px;
+    padding-right: 100px;
+    line-height: 19pt;
+}
+
+.Colunas h2 {
+    padding-left: 50px;
+    padding-right: 100px;
+    line-height: 20pt;
+}
+
+.Colunas p {
+    text-align: justify;
+    font-family: 'interRegular';
+    line-height: 19pt;
+    padding-left: 50px;
+
+    margin-top: 10px;
+}
+
+.EditoraePub {
+    display: flex;
+    margin-left: 30px;
+}
+
+.EditoraePub .bold {
+    font-family: 'interSemiBold';
+}
+
+.editora {
+    text-align: center;
+}
+
+.publicacao {
+    text-align: center;
+}
+
+
+
 /* RESPONSIVO 1024PX */
 @media (max-width: 1024px) {
     .LogoNav {
@@ -719,6 +880,7 @@ nav ul li a {
         padding-right: 535px;
         padding-left: 21px;
     }
+
 
     /* Estilizando a navegação */
     .LogoNav nav ul {
@@ -774,6 +936,7 @@ nav ul li a {
         gap: 120px;
         padding-right: 83px;
     }
+
 
 
 

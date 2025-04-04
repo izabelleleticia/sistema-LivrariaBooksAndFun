@@ -8,6 +8,10 @@ class HomeController extends Controller{
         $dados = array();
         $dados['titulo'] = 'Site | Livraria BooksAndFun';
 
+
+
+        
+
         var_dump($dados);
 
         $this->carregarViews('home', $dados);

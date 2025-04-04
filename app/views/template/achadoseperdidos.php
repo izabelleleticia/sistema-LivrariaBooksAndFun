@@ -9,8 +9,7 @@
         </div>
         <div class="livrosFiccao">
             <div>
-                <a href="pag-livro.php"><img src="<?php echo BASE_URL; ?>assets/img/abiblioteca.jpg" alt=""> </a>
-
+                <a href="http://localhost/sistema-LivrariaBooksAndFun/public/livro"><img src="<?php echo BASE_URL; ?>assets/img/abiblioteca.jpg" alt=""> </a>
                 <p>A biblioteca <br>R$49,50</p>
             </div>
             <div>

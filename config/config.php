@@ -10,7 +10,7 @@ define('BASE_URL','http://localhost/sistema-LivrariaBooksAndFun/public/');
 define('DB_HOST', 'smpsistema.com.br');
 define('DB_NAME', 'u283879542_booksandfun');
 define('DB_USER', 'u283879542_booksandfun');
-define('DB_PASS', '@Ti26_11');
+define('DB_PASS', '@Booksandfun01');
 
 
 // Configuração do Email
