@@ -1,52 +1,49 @@
 <section class="SecaoAchados">
     <article class="site">
-        <div class="AchadosTexto">
-            <h1>Seção dos Achados e Perdidos</h1>
-            <p>Ainda está em dúvida sobre o que comprar? Descubra nossas categorias e encontre o que você procura:</p>
-        </div>
-        <div class="h2">
-            <h2>Ficção</h2>
-        </div>
-        <div class="livrosFiccao">
+    <div class="AchadosTexto">
+    <h1>Seção dos Achados e Perdidos</h1>
+    <p>Ainda está em dúvida sobre o que comprar? Descubra nossas categorias e encontre o que você procura:</p>
+</div>
+
+<div class="h2">
+    <h2>Ficção</h2>
+</div>
+
+<div class="livrosFiccao">
+    <?php if (!empty($ficcao)) : ?>
+        <?php foreach ($ficcao as $livro) : ?>
             <div>
-                <a href="http://localhost/sistema-LivrariaBooksAndFun/public/livro"><img src="<?php echo BASE_URL; ?>assets/img/abiblioteca.jpg" alt=""> </a>
-                <p>A biblioteca <br>R$49,50</p>
+                <a href="<?php echo BASE_URL . 'livro/' . $livro['id_livros']; ?>">
+                    <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem']; ?>" alt="">
+                </a>
+                <p><?php echo $livro['titulo_livros']; ?> <br>R$<?php echo($livro['preco']); ?></p>
             </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/umaaventura.jpg" alt="">
-                <p>Uma aventura <br>R$50,00</p>
-            </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/operegrino.jpg" alt="">
-                <p>O peregrino <br>R$50,00</p>
-            </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/ossetemaridos.jpg" alt="">
-                <p>Os sete maridos <br> de Evelyn Hugo <br>R$50,00</p>
-            </div>
-        </div>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <p>Nenhum livro de ficção disponível no momento.</p>
+    <?php endif; ?>
+</div>
+
 
         <div class="h2">
             <h2>Romance</h2>
         </div>
         <div class="livrosRomance">
+    <?php if (!empty($romance)) : ?>
+        <?php foreach ($romance as $livro) : ?>
             <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/umencontro.jpg" alt="">
-                <p>Mudar<br>R$50,00</p>
+                <a href="<?php echo BASE_URL . 'livro/' . $livro['id_livros']; ?>">
+                    <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem']; ?>" alt="">
+                </a>
+                <p><?php echo $livro['titulo_livros']; ?><br>R$<?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
             </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/euteamo.jpg" alt="">
-                <p>Ps. Eu te amo <br>R$50,00</p>
-            </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/eueessemeucoracao.jpg" alt="">
-                <p>Eu e esse <br>meu coração<br>R$50,00</p>
-            </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/amaldicaodoex.jpg" alt="">
-                <p>A malição <br>do ex<br>R$50,00</p>
-            </div>
-        </div>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <p>Nenhum livro de romance encontrado.</p>
+    <?php endif; ?>
+</div>
+
+
 
         <h2>Conheça: A Trilogia que Virou Série</h2>
         <div class="secaoSerie">
