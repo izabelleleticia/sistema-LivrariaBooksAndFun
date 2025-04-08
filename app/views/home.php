@@ -32,6 +32,7 @@
         <?php require_once('template/destaques.php'); ?>
         <?php require_once('template/achadoseperdidos.php'); ?>
         <?php require_once('template/secaoVerao.php'); ?>
+        <?php require_once('template/secao.infantil.php'); ?>
     </main>
     <footer>
         <?php require_once('template/rodape.php'); ?>

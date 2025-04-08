@@ -1,26 +1,25 @@
 <section class="secaoVerao">
     <div class="linha"></div>
-    <h1>Assista <br>O verão que mudou minha vida</h1>
-    <img src="<?php echo BASE_URL; ?>assets/img/overaoque.png" alt="FOTO SÉRIE">
+    <h1>Quando um livro é bom demais… ele vira série.</h1>
+<h1>Descubra: <?php echo $serie['nome_serie']; ?></h1>
+
+    <a href="<?php echo $serie['site_streaming']; ?>" target="_blank" rel="noopener noreferrer">
+    <img src="<?php echo BASE_URL . 'uploads/' . $serie['imagem']; ?>" alt="Imagem da série">
+</a>
 
 </section>
+
 <section class="background">
-
     <div class="Infos">
-    <h1>Onde assistir?</h1>
+        <h1>Onde assistir?</h1>
 
+            <div class="canalStreaming">
+            <img src="<?php echo BASE_URL . 'uploads/' . $serie['logo_streaming']; ?>" alt="<?php echo $serie['nome_streaming']; ?>">
+                <h3><?php echo $serie['nome_streaming']; ?></h3>
+            </div>
 
-        <div class="canalStreaming">
-            <img src="<?php echo BASE_URL; ?>assets/img/amazon.png" alt="FOTO AMAZON">
-            <h3>Amazon Prime Video</h3>
-        </div>
         <div class="paragrafoStreaming">
-            <p>A série "O Verão Que Mudou Minha Vida" (The Summer I Turned Pretty) está disponível para streaming <br> exclusivamente
-                no Amazon Prime Video.
-                Tanto a 1ª temporada quanto a 2ª temporada podem ser assistidas pelos assinantes da plataforma.</p>
+            <p><?php echo $serie['sinopse']; ?></p>
         </div>
     </div>
-   
-
-
 </section>
