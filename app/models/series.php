@@ -37,6 +37,15 @@ class Series extends Model
         $stmt->execute(); // sem bindValue!
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function getLivroSerie(){
+        $sql = "SELECT l.titulo_livros, l.imagem AS imagem_livro, l.preco, s.nome_serie, s.imagem AS imagem_serie 
+                FROM tbl_livros l 
+                INNER JOIN tbl_series s ON l.id_serie = s.id_serie";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna um array associativo com todos os resultados
+    }
+    
     
     // public function getImgStreamingPorId($id){
     //     $sql = "SELECT logo_streaming FROM tbl_streaming WHERE id_streaming = :id ORDER BY RAND()";

@@ -22,6 +22,7 @@ class HomeController extends Controller
         $romance = $romanceModel->getRomance();
         $dados['romance'] = $romance;
 
+
         $seriesModel = new Series();
 
         // Busca todas as séries
@@ -32,12 +33,13 @@ class HomeController extends Controller
         $serie = $seriesModel->getSerieComStreamingPorId(1);
         $dados['serie'] = $serie;
 
-    
+        $serie = $seriesModel->getLivroSerie();
+        $dados['livroSerie'] = $serie;
+
+    var_dump($serie);
 
         // Teste: exibe a estrutura do array
-        var_dump($dados['serie']);
-
-
+        // var_dump($dados['serie'])
 
 
         $this->carregarViews('home', $dados);

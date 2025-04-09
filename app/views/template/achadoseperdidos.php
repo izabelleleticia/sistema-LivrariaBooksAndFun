@@ -42,26 +42,16 @@
         <p>Nenhum livro de romance encontrado.</p>
     <?php endif; ?>
 </div>
-
-
-
-        <h2>Conheça: A Trilogia que Virou Série</h2>
-        <div class="secaoSerie">
+<?php if (!empty($livroSerie)): ?>
+    <h2>Conheça: <?php echo $livroSerie[0]['nome_serie']; ?></h2>
+    <div class="secaoSerie">
+        <?php foreach ($livroSerie as $livro): ?>
             <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/overao.jpeg" alt="">
-                <p>O verão que mudou minha vida <br>R$50,00</p>
+                <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="">
+                <p><?php echo $livro['titulo_livros']; ?><br>R$<?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
             </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/que.jpeg" alt="">
-                <p>Sem você não é verão<br>R$50,00</p>
-            </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/mudouminhavida.jpeg" alt="">
-                <p>Sempre teremos o nosso verão<br>R$50,00</p>
-            </div>
-        </div>
-
-
-    </article>
-
-</section>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <p>Nenhum livro encontrado.</p>
+<?php endif; ?>

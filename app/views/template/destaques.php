@@ -15,7 +15,7 @@
                     
                     </p>
                     <p>
-                        <?php echo $livro['preco']; ?><br>
+                        R$<?php echo $livro['preco']; ?><br>
                     </p>
                 </div>
             <?php endforeach; ?>
