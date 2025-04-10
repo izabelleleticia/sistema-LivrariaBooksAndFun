@@ -42,16 +42,4 @@
         <p>Nenhum livro de romance encontrado.</p>
     <?php endif; ?>
 </div>
-<?php if (!empty($livroSerie)): ?>
-    <h2>Conheça: <?php echo $livroSerie[0]['nome_serie']; ?></h2>
-    <div class="secaoSerie">
-        <?php foreach ($livroSerie as $livro): ?>
-            <div>
-                <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="">
-                <p><?php echo $livro['titulo_livros']; ?><br>R$<?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
-            </div>
-        <?php endforeach; ?>
-    </div>
-<?php else: ?>
-    <p>Nenhum livro encontrado.</p>
-<?php endif; ?>
+</article>

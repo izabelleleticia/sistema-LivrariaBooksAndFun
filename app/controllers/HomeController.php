@@ -36,7 +36,7 @@ class HomeController extends Controller
         $serie = $seriesModel->getLivroSerie();
         $dados['livroSerie'] = $serie;
 
-    var_dump($serie);
+    // var_dump($serie);
 
         // Teste: exibe a estrutura do array
         // var_dump($dados['serie'])
