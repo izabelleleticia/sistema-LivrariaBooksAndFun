@@ -42,26 +42,4 @@
         <p>Nenhum livro de romance encontrado.</p>
     <?php endif; ?>
 </div>
-
-
-
-        <h2>Conheça: A Trilogia que Virou Série</h2>
-        <div class="secaoSerie">
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/overao.jpeg" alt="">
-                <p>O verão que mudou minha vida <br>R$50,00</p>
-            </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/que.jpeg" alt="">
-                <p>Sem você não é verão<br>R$50,00</p>
-            </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/mudouminhavida.jpeg" alt="">
-                <p>Sempre teremos o nosso verão<br>R$50,00</p>
-            </div>
-        </div>
-
-
-    </article>
-
-</section>
+</article>

@@ -10,7 +10,6 @@
     </a>
 
 </section>
-
 <section class="background">
     <div class="Infos">
         <h1>Onde assistir?</h1>

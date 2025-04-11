@@ -1,886 +1,101 @@
-@font-face {
-    font-family: 'face';
-    src: url(../fonts/Poppins-SemiBoldItalic.ttf);
-}
+    @font-face {
+        font-family: 'face';
+        src: url(../fonts/Poppins-SemiBoldItalic.ttf);
+    }
+
+    @font-face {
+        font-family: 'inter';
+        src: url(../fonts/Inter_24pt-ExtraBold.ttf);
+    }
+
+    @font-face {
+        font-family: 'interRegular';
+        src: url(../fonts/Inter_18pt-Regular.ttf);
+    }
+
+    @font-face {
+        font-family: 'interSemiBold';
+        src: url(../fonts/Inter_24pt-SemiBoldItalic.ttf);
+    }
+
+    @font-face {
+        font-family: 'interItalic';
+        src: url(../fonts/Inter_18pt-Italic.ttf);
+    }
+
+    .site {
+        max-width: 1200px;
+        margin: 0 auto;
+        /* Centraliza horizontalmente */
+        text-align: center;
+        /* Centraliza o texto dentro */
+    }
+
+    body {
+        /* font-family: 'face'; */
+        font-family: 'inter';
+        background-color: #ffffff;
+    }
+
+    header .right {
+        height: 20px;
+        background-color: #BB87E9;
+    }
+
+    header .left {
+        height: 75px;
+        background-color: #8F5BBC;
+    }
 
-@font-face {
-    font-family: 'inter';
-    src: url(../fonts/Inter_24pt-ExtraBold.ttf);
-}
-
-@font-face {
-    font-family: 'interRegular';
-    src: url(../fonts/Inter_18pt-Regular.ttf);
-}
-
-@font-face {
-    font-family: 'interSemiBold';
-    src: url(../fonts/Inter_24pt-SemiBoldItalic.ttf);
-}
-
-@font-face {
-    font-family: 'interItalic';
-    src: url(../fonts/Inter_18pt-Italic.ttf);
-}
-
-.site {
-    max-width: 1200px;
-    margin: 0 auto;
-    /* Centraliza horizontalmente */
-    text-align: center;
-    /* Centraliza o texto dentro */
-}
-
-body {
-    /* font-family: 'face'; */
-    font-family: 'inter';
-    background-color: #ffffff;
-}
-
-header .right {
-    height: 20px;
-    background-color: #BB87E9;
-}
-
-header .left {
-    height: 75px;
-    background-color: #8F5BBC;
-}
-
-.LogoNav {
-    display: flex;
-    justify-content: space-around;
-}
-
-.LogoNav .logoMenu {
-    margin-top: -31px;
-    height: 148px;
-}
-
-
-.logo {
-    height: 40px;
-    margin-right: 10px;
-}
-
-.LogoNav img {
-    height: 200px;
-}
-
-.LogoNav .Imagem {
-    margin-top: -60px;
-}
-
-.input-pesquisa {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 20px;
-    background: transparent;
-}
-
-.btn-pesquisa {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-pesquisa img {
-    height: 20px;
-}
-
-
-.LogoNav .cadastro {
-    height: 40px;
-    margin-top: -10px;
-}
-
-/* Estilizando a navegação */
-.LogoNav nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    /* Deixa os itens na mesma linha */
-    margin-top: 31px;
-}
-
-/* Espaço entre os links */
-nav ul li {
-    margin-right: 40px;
-}
-
-/* Estilo dos links */
-nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.banner img {
-    height: 425px;
-    width: 100%;
-}
-
-.destaques {
-    font-family: 'interRegular';
-}
-
-.destaques h1 {
-    font-family: 'interSemiBold';
-    font-size: 25pt;
-    color: #8F5BBC;
-    margin-top: 15px;
-}
-
-.destaques img {
-    height: 155px;
-    border-radius: 10px;
-
-}
-
-
-.destaques .livrosDestaque {
-
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 106px;
-}
-
-.livrosDestaque p {
-    color: black;
-    font-family: 'interRegular';
-    margin-top: 3px;
-    line-height: 19px;
-
-}
-
-.SecaoAchados {
-    font-family: 'interRegular';
-
-}
-
-.SecaoAchados h1 {
-    font-family: 'interSemiBold';
-    font-size: 25pt;
-    color: #8F5BBC;
-    margin-top: 15px;
-}
-
-.SecaoAchados img {
-    height: 155px;
-    border-radius: 10px;
-}
-
-
-.SecaoAchados .livrosFiccao {
-
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 200px;
-
-}
-
-.livrosFiccao p {
-    color: black;
-    font-family: 'interRegular';
-    margin-top: 10pt;
-    line-height: 15pt;
-}
-
-.SecaoAchados .livrosRomance {
-
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 200px;
-}
-
-.SecaoAchados .secaoSerie {
-
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 200px;
-}
-
-.secaoSerie p {
-    line-height: 15pt;
-}
-
-.livrosRomance p {
-    color: black;
-    font-family: 'interRegular';
-    margin-top: 10pt;
-    line-height: 15pt;
-}
-
-.SecaoAchados h2 {
-    display: flex;
-    margin-top: 30px;
-    font-size: 20pt;
-    color: #8F5BBC;
-    padding-left: 90px;
-    font-family: 'interSemiBold';
-}
-
-.SecaoAchados p {
-    margin-top: 7px;
-}
-
-.secaoVerao .linha {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    height: 26px;
-    background-color: #BB87E9;
-
-}
-
-.curiosidades .linha {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    height: 26px;
-    background-color: #BB87E9;
-}
-
-.curiosidades .linha h2 {
-    color: #ffffff;
-    font-size: 20pt;
-    font-family: 'interSemiBold';
-    padding-left: 105px;
-}
-
-.secaoVerao h1 {
-    font-family: 'interSemiBold';
-    padding-left: 100px;
-    font-size: 20pt;
-    color: #8F5BBC;
-    line-height: 20pt;
-    margin-bottom: 15px;
-}
-
-.secaoVerao img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    image-rendering: auto;
-}
-
-.background {
-    background-color: #A95BBC;
-    margin-top: -5px;
-    height: 230px;
-    padding-top: 30px;
-    /* Empurra o conteúdo para baixo sem afetar a posição da seção */
-}
-
-.background h1 {
-
-    font-size: 30pt;
-    color: #ffffff;
-
-}
-
-.background img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
-.background .Infos {
-    padding-left: 100px;
-}
-
-.background .canalStreaming {
-    display: flex;
-    margin-top: 50px;
-
-
-}
-
-.canalStreaming h3 {
-    padding-left: 10px;
-    color: #ffffff;
-    font-size: 20pt;
-}
-
-.canalStreaming img {
-    margin-top: -13px;
-}
-
-.background .paragrafoStreaming {
-    font-family: 'interRegular';
-
-    color: #ffffff;
-
-    line-height: 20px;
-}
-
-.paragrafoStreaming p {
-    margin-top: 20px;
-    font-size: 12pt;
-}
-
-.AchadosTexto p {
-    margin-top: 30px;
-}
-
-.botao {
-    display: flex;
-    justify-content: center;
-    /* Centraliza o botão */
-    margin-top: 20px;
-    padding-left: 576px;
-}
-
-.botao button {
-    display: flex;
-    align-items: center;
-    /* Alinha o ícone com o texto */
-    background-color: #8F5BBC;
-    /* Cor do botão */
-    color: white;
-    font-size: 20px;
-    font-family: 'interRegular';
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    /* Cantos arredondados */
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.botao button img {
-    width: 20px;
-    /* Ajusta o tamanho do ícone */
-    height: 20px;
-    margin-right: 8px;
-    /* Espaço entre o ícone e o texto */
-}
-
-.botao button:hover {
-    background-color: #A95BBC;
-    /* Cor ao passar o mouse */
-}
-
-.blogInfos h1 {
-    margin-top: 20px;
-    color: #A95BBC;
-    font-family: 'interSemiBold';
-    text-align: center;
-    font-size: 20pt;
-}
-
-.blogInfos p {
-    font-family: 'interRegular';
-    text-align: center;
-    margin-top: 20px;
-}
-
-.blogInfos img {
-    height: 155px;
-    border-radius: 10px;
-    margin-top: 20px;
-
-}
-
-.blogInfos .Recomendacoes {
-    display: flex;
-}
-
-.Recomendacoes {
-    justify-content: center;
-    gap: 50px;
-}
-
-.blogInfos {
-    text-align: center;
-}
-
-.curiosidades h1 {
-    margin-top: 20px;
-    color: #A95BBC;
-    font-family: 'interSemiBold';
-    text-align: center;
-    font-size: 20pt;
-}
-
-.Obras h3 {
-    margin-top: 10px;
-    color: #A95BBC;
-    font-family: 'interSemiBold';
-    text-align: center;
-    font-size: 20pt;
-}
-
-.Obras .autor {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 75px;
-    text-align: center;
-}
-
-.Obras .autor img {
-    height: 155px;
-    border-radius: 10px;
-
-}
-
-.autor p {
-    line-height: 25px;
-    font-family: 'interRegular';
-    text-align: center;
-
-}
-
-.curiosidades button {
-    display: flex;
-    align-items: center;
-    /* Alinha o ícone com o texto */
-    background-color: #BB87E9;
-    /* Cor do botão */
-    color: white;
-    font-size: 20px;
-    font-family: 'interSemiBold';
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    /* Cantos arredondados */
-    cursor: pointer;
-    transition: background 0.3s ease;
-
-}
-
-.curiosidades button:hover {
-    background-color: #A95BBC;
-    /* Cor ao passar o mouse */
-}
-
-.curiosidades button img {
-    width: 20px;
-    /* Ajusta o tamanho do ícone */
-    height: 20px;
-    margin-right: 8px;
-    /* Espaço entre o ícone e o texto */
-}
-
-.curiosidades .botao {
-    padding-left: 600px;
-}
-
-.fotoTexto {
-    display: flex;
-    padding-left: 100px;
-}
-
-.fotoTexto p {
-    margin-top: 80px;
-
-    font-family: 'interRegular';
-    text-align: justify;
-    padding-left: 10px;
-    padding-right: 200px;
-    line-height: 25px;
-
-}
-
-.Filme img {
-    margin-top: 10px;
-    width: 100%;
-    height: 435px;
-    object-fit: cover;
-}
-
-.curiosidades .backInfos {
-    background-color: #A95BBC;
-    height: 308px;
-    margin-top: -10px;
-}
-
-.backInfos h3 {
-    font-size: 20pt;
-    color: #ffffff;
-    padding-top: 30px;
-    padding-left: 100px;
-}
-
-.Streaming {
-    padding-left: 100px;
-}
-
-.Streaming p {
-    color: #ffffff;
-    font-family: 'interRegular';
-
-}
-
-.backInfos img {
-    border-radius: 50%;
-    height: 35px;
-}
-
-.Streaming .canalStreaming {
-    display: flex;
-}
-
-.canalStreaming {
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
-.canalStreaming p {
-    color: #ffffff;
-    padding-left: 10px;
-    font-family: 'interRegular';
-}
-
-.sobre h1 {
-    font-family: 'interSemiBold';
-    font-size: 25pt;
-    color: #8F5BBC;
-    margin-top: 15px;
-    text-align: center;
-}
-
-.sobre p {
-
-    text-align: start;
-    line-height: 35px;
-    font-family: 'interItalic';
-}
-
-.sobre .fotoTexto {
-    margin-top: -43px;
-}
-
-.sobre .Espaco img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    margin-top: 30px;
-    margin-bottom: -5px;
-}
-
-.formContato {
-    padding: 50px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.formContato .mensagem p {
-    margin-top: 10px;
-    color: #ffffff;
-
-}
-
-.formContato .mensagem a {
-    text-decoration: none;
-}
-
-.formContato h1 {
-    font-family: 'interSemiBold';
-    font-size: 25pt;
-    color: #8F5BBC;
-
-    text-align: center;
-}
-
-.contato-container {
-    width: 600px;
-
-    padding: 20px;
-    background: #BB87E9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.campo {
-    margin-bottom: 15px;
-}
-
-.campo .campo2 {
-    display: flex;
-    align-content: space-around;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.campo .campo2 label {
-    padding: unset;
-    padding-left: 25px;
-}
-
-.campo label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #ffffff;
-    text-align: left;
-    padding-left: 97px;
-    font-size: 15pt;
-}
-
-.campo input,
-.campo textarea {
-    width: 70%;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    background-color: #D9D9D9;
-    height: 24px;
-    font-family: 'interSemiBold';
-    text-align: center;
-
-}
-
-.botoes {
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn-enviar {
-    display: flex;
-    align-items: center;
-    background: #8F5BBC;
-    color: white;
-    padding: 3px 5px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'inter';
-}
-
-.botoes {
-    padding-left: 100px;
-    padding-right: 100px;
-}
-
-.btn-enviar img {
-    width: 20px;
-    /* Ajuste o tamanho da imagem */
-    margin-right: 8px;
-}
-
-
-
-
-.rodape {
-    background-color: #8F5BBC;
-    color: #fff;
-    /* Texto branco */
-    padding: 30px 90px;
-    text-align: center;
-
-}
-
-.rodape .top {
-    height: 20px;
-    background-color: #BB87E9;
-    margin-top: -100px
-}
-
-.rodape-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.rodape nav {
-    flex: 1;
-    min-width: 200px;
-    margin: 10px;
-    text-align: left;
-}
-
-.rodape h1 {
-    font-size: 15pt;
-    margin-bottom: 10px;
-}
-
-.rodape ul {
-    list-style: none;
-    padding: 0;
-}
-
-.rodape ul li {
-    display: flex;
-    align-items: center;
-    /* Alinha o ícone e o texto */
-    margin-bottom: 8px;
-    font-family: 'interRegular';
-    color: #ffffff;
-}
-
-.rodape ul li img {
-    width: 18px;
-    /* Tamanho uniforme dos ícones */
-    height: 18px;
-    margin-right: 8px;
-    /* Espaço entre o ícone e o texto */
-}
-
-.rodape a {
-    color: #ffffff;
-    font-weight: normal;
-
-}
-
-.rodape a:hover {
-    color: #fff;
-
-}
-
-.rodape p {
-    margin-top: 30px;
-    font-size: 15pt;
-    color: #ffffff;
-}
-
-/*Páginas Livro*/
-.Colunas {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 100px;
-    padding-right: 100px;
-    margin-left: 100px;
-
-}
-
-.Colunas button {
-    display: flex;
-    align-items: center;
-    background-color: #8F5BBC;
-    color: white;
-    font-size: 20px;
-    font-family: 'interRegular';
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-.Colunas .quantidade{
-    
-    font-size: 15px;
-}
-.botoes-1 .adicionar{
-    background-color: #8F5BBC;
-    color: white;
-    font-size: 15px;
-    border-radius: 15px;
-    border: none;
-    width: 180px;
-    height: 30px;
-
-
-
-
-}
-.botoes-1 .comprar{
-    background-color: #8F5BBC;
-    color: white;
-    font-size: 15px;
-    border-radius: 15px;
-    border: none;
-    width: 130px;
-    height: 30px;
-
-
-}
-.botoes-1{
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 20px;
-    padding-right: 100px;
-}
-
-
-
-
-.imgInfo {
-    text-align: center;
-}
-
-.imgInfo h3 {
-    margin-top: 10px;
-}
-
-.imgInfo button {
-    margin-top: 10px;
-}
-
-.Colunas .imgInfo img {
-    margin-top: 50px;
-    height: 250px;
-    border-radius: 10px;
-
-}
-
-.Colunas h1 {
-    margin-top: 20px;
-    font-size: 20pt;
-    padding-left: 50px;
-    padding-right: 100px;
-    line-height: 19pt;
-}
-
-.Colunas h2 {
-    padding-left: 50px;
-    padding-right: 100px;
-    line-height: 20pt;
-}
-
-.Colunas p {
-    text-align: justify;
-    font-family: 'interRegular';
-    line-height: 19pt;
-    padding-left: 50px;
-
-    margin-top: 10px;
-}
-
-.EditoraePub {
-    display: flex;
-    margin-left: 30px;
-}
-
-.EditoraePub .bold {
-    font-family: 'interSemiBold';
-}
-
-.editora {
-    text-align: center;
-}
-
-.publicacao {
-    text-align: center;
-}
-
-
-
-/* RESPONSIVO 1024PX */
-@media (max-width: 1024px) {
     .LogoNav {
         display: flex;
         justify-content: space-around;
     }
 
-    .LogoNav img {
+    .LogoNav .logoMenu {
         margin-top: -31px;
         height: 148px;
-        padding-right: 535px;
-        padding-left: 21px;
     }
 
+
+    .logo {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .LogoNav img {
+        height: 200px;
+    }
+
+    .LogoNav .Imagem {
+        margin-top: -60px;
+    }
+
+    .input-pesquisa {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 20px;
+        background: transparent;
+    }
+
+    .btn-pesquisa {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-pesquisa img {
+        height: 20px;
+    }
+
+
+    .LogoNav .cadastro {
+        height: 40px;
+        margin-top: -10px;
+    }
 
     /* Estilizando a navegação */
     .LogoNav nav ul {
@@ -904,18 +119,77 @@ nav ul li a {
         font-weight: bold;
     }
 
+    .banner img {
+        height: 425px;
+        width: 100%;
+    }
+
+    .destaques {
+        font-family: 'interRegular';
+    }
+
+    .destaques h1 {
+        font-family: 'interSemiBold';
+        font-size: 25pt;
+        color: #8F5BBC;
+        margin-top: 15px;
+    }
+
+    .destaques img {
+        height: 155px;
+        border-radius: 10px;
+
+    }
+
+
+    .destaques .livrosDestaque {
+
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 35px;
+    }
+
+    .livrosDestaque p {
+        color: black;
+        font-family: 'interRegular';
+        margin-top: 3px;
+        line-height: 19px;
+
+    }
+
+    .SecaoAchados {
+        font-family: 'interRegular';
+
+    }
+
+    .SecaoAchados h1 {
+        font-family: 'interSemiBold';
+        font-size: 25pt;
+        color: #8F5BBC;
+        margin-top: 15px;
+    }
+
+    .SecaoAchados img {
+        height: 155px;
+        border-radius: 10px;
+    }
+
+
     .SecaoAchados .livrosFiccao {
 
         margin-top: 20px;
         display: flex;
         justify-content: center;
-        gap: 140px;
-        padding-right: 73px;
+        gap: 200px;
 
     }
 
-    .SecaoAchados .h2 h2 {
-        padding-left: 60px;
+    .livrosFiccao p {
+        color: black;
+        font-family: 'interRegular';
+        margin-top: 10pt;
+        line-height: 15pt;
     }
 
     .SecaoAchados .livrosRomance {
@@ -923,9 +197,7 @@ nav ul li a {
         margin-top: 20px;
         display: flex;
         justify-content: center;
-        gap: 140px;
-        padding-right: 73px;
-
+        gap: 200px;
     }
 
     .SecaoAchados .secaoSerie {
@@ -933,11 +205,744 @@ nav ul li a {
         margin-top: 20px;
         display: flex;
         justify-content: center;
-        gap: 120px;
-        padding-right: 83px;
+        gap: 200px;
+    }
+
+    .secaoSerie p {
+        line-height: 15pt;
+    }
+
+    .livrosRomance p {
+        color: black;
+        font-family: 'interRegular';
+        margin-top: 10pt;
+        line-height: 15pt;
+    }
+
+    .SecaoAchados h2 {
+        display: flex;
+        margin-top: 30px;
+        font-size: 20pt;
+        color: #8F5BBC;
+        padding-left: 90px;
+        font-family: 'interSemiBold';
+    }
+
+    .SecaoAchados p {
+        margin-top: 7px;
+    }
+
+    .secaoVerao .linha {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        height: 26px;
+        background-color: #BB87E9;
+
+    }
+
+    .curiosidades .linha {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        height: 26px;
+        background-color: #BB87E9;
+    }
+
+    .curiosidades .linha h2 {
+        color: #ffffff;
+        font-size: 20pt;
+        font-family: 'interSemiBold';
+        padding-left: 105px;
+    }
+
+    .secaoVerao h1 {
+        font-family: 'interSemiBold';
+        padding-left: 100px;
+        font-size: 20pt;
+        color: #8F5BBC;
+        line-height: 20pt;
+        margin-bottom: 15px;
+    }
+
+    .secaoVerao img {
+        width: 600px;
+        height: 400px;
+        object-fit: cover;
+        image-rendering: auto;
+        margin-right: 160px;
+    }
+
+    .secaoSerie{
+        display: flex;
+    }
+
+    .background {
+        background-color: #A95BBC;
+        margin-top: -5px;
+        height: 230px;
+        padding-top: 30px;
+        /* Empurra o conteúdo para baixo sem afetar a posição da seção */
+    }
+
+    .background h1 {
+
+        font-size: 30pt;
+        color: #ffffff;
+
+    }
+
+    .background img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    .background .Infos {
+        padding-left: 100px;
+    }
+
+    .background .canalStreaming {
+        display: flex;
+        margin-top: 50px;
+
+
+    }
+
+    .canalStreaming h3 {
+        padding-left: 10px;
+        color: #ffffff;
+        font-size: 20pt;
+    }
+
+    .canalStreaming img {
+        margin-top: -13px;
+    }
+
+    .background .paragrafoStreaming {
+        font-family: 'interRegular';
+
+        color: #ffffff;
+
+        line-height: 20px;
+    }
+
+    .paragrafoStreaming p {
+        margin-top: 20px;
+        font-size: 12pt;
+    }
+
+    .AchadosTexto p {
+        margin-top: 30px;
+    }
+
+    .botao {
+        display: flex;
+        justify-content: center;
+        /* Centraliza o botão */
+        margin-top: 20px;
+        padding-left: 576px;
+    }
+
+    .botao button {
+        display: flex;
+        align-items: center;
+        /* Alinha o ícone com o texto */
+        background-color: #8F5BBC;
+        /* Cor do botão */
+        color: white;
+        font-size: 20px;
+        font-family: 'interRegular';
+        border: none;
+        padding: 10px 20px;
+        border-radius: 15px;
+        /* Cantos arredondados */
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .botao button img {
+        width: 20px;
+        /* Ajusta o tamanho do ícone */
+        height: 20px;
+        margin-right: 8px;
+        /* Espaço entre o ícone e o texto */
+    }
+
+    .botao button:hover {
+        background-color: #A95BBC;
+        /* Cor ao passar o mouse */
+    }
+
+    .blogInfos h1 {
+        margin-top: 20px;
+        color: #A95BBC;
+        font-family: 'interSemiBold';
+        text-align: center;
+        font-size: 20pt;
+    }
+
+    .blogInfos p {
+        font-family: 'interRegular';
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .blogInfos img {
+        height: 155px;
+        border-radius: 10px;
+        margin-top: 20px;
+
+    }
+
+    .blogInfos .Recomendacoes {
+        display: flex;
+    }
+
+    .Recomendacoes {
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .blogInfos {
+        text-align: center;
+    }
+
+    .curiosidades h1 {
+        margin-top: 20px;
+        color: #A95BBC;
+        font-family: 'interSemiBold';
+        text-align: center;
+        font-size: 20pt;
+    }
+
+    .Obras h3 {
+        margin-top: 10px;
+        color: #A95BBC;
+        font-family: 'interSemiBold';
+        text-align: center;
+        font-size: 20pt;
+    }
+
+    .Obras .autor {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 75px;
+        text-align: center;
+    }
+
+    .Obras .autor img {
+        height: 155px;
+        border-radius: 10px;
+
+    }
+
+    .autor p {
+        line-height: 25px;
+        font-family: 'interRegular';
+        text-align: center;
+
+    }
+
+    .curiosidades button {
+        display: flex;
+        align-items: center;
+        /* Alinha o ícone com o texto */
+        background-color: #BB87E9;
+        /* Cor do botão */
+        color: white;
+        font-size: 20px;
+        font-family: 'interSemiBold';
+        border: none;
+        padding: 10px 20px;
+        border-radius: 15px;
+        /* Cantos arredondados */
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+    }
+
+    .curiosidades button:hover {
+        background-color: #A95BBC;
+        /* Cor ao passar o mouse */
+    }
+
+    .curiosidades button img {
+        width: 20px;
+        /* Ajusta o tamanho do ícone */
+        height: 20px;
+        margin-right: 8px;
+        /* Espaço entre o ícone e o texto */
+    }
+
+    .curiosidades .botao {
+        padding-left: 600px;
+    }
+
+    .fotoTexto {
+        display: flex;
+        padding-left: 100px;
+    }
+
+    .fotoTexto p {
+        margin-top: 80px;
+
+        font-family: 'interRegular';
+        text-align: justify;
+        padding-left: 10px;
+        padding-right: 200px;
+        line-height: 25px;
+
+    }
+
+    .Filme img {
+        margin-top: 10px;
+        width: 100%;
+        height: 435px;
+        object-fit: cover;
+    }
+
+    .curiosidades .backInfos {
+        background-color: #A95BBC;
+        height: 308px;
+        margin-top: -10px;
+    }
+
+    .backInfos h3 {
+        font-size: 20pt;
+        color: #ffffff;
+        padding-top: 30px;
+        padding-left: 100px;
+    }
+
+    .Streaming {
+        padding-left: 100px;
+    }
+
+    .Streaming p {
+        color: #ffffff;
+        font-family: 'interRegular';
+
+    }
+
+    .backInfos img {
+        border-radius: 50%;
+        height: 35px;
+    }
+
+    .Streaming .canalStreaming {
+        display: flex;
+    }
+
+    .canalStreaming {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .canalStreaming p {
+        color: #ffffff;
+        padding-left: 10px;
+        font-family: 'interRegular';
+    }
+
+    .sobre h1 {
+        font-family: 'interSemiBold';
+        font-size: 25pt;
+        color: #8F5BBC;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .sobre p {
+
+        text-align: start;
+        line-height: 35px;
+        font-family: 'interItalic';
+    }
+
+    .sobre .fotoTexto {
+        margin-top: -43px;
+    }
+
+    .sobre .Espaco img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        margin-top: 30px;
+        margin-bottom: -5px;
+    }
+
+    .formContato {
+        padding: 50px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .formContato .mensagem p {
+        margin-top: 10px;
+        color: #ffffff;
+
+    }
+
+    .formContato .mensagem a {
+        text-decoration: none;
+    }
+
+    .formContato h1 {
+        font-family: 'interSemiBold';
+        font-size: 25pt;
+        color: #8F5BBC;
+
+        text-align: center;
+    }
+
+    .contato-container {
+        width: 600px;
+
+        padding: 20px;
+        background: #BB87E9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .campo {
+        margin-bottom: 15px;
+    }
+
+    .campo .campo2 {
+        display: flex;
+        align-content: space-around;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .campo .campo2 label {
+        padding: unset;
+        padding-left: 25px;
+    }
+
+    .campo label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #ffffff;
+        text-align: left;
+        padding-left: 97px;
+        font-size: 15pt;
+    }
+
+    .campo input,
+    .campo textarea {
+        width: 70%;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        background-color: #D9D9D9;
+        height: 24px;
+        font-family: 'interSemiBold';
+        text-align: center;
+
+    }
+
+    .botoes {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-enviar {
+        display: flex;
+        align-items: center;
+        background: #8F5BBC;
+        color: white;
+        padding: 3px 5px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: 'inter';
+    }
+
+    .botoes {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .btn-enviar img {
+        width: 20px;
+        /* Ajuste o tamanho da imagem */
+        margin-right: 8px;
     }
 
 
 
 
-}
+    .rodape {
+        background-color: #8F5BBC;
+        color: #fff;
+        /* Texto branco */
+        padding: 30px 90px;
+        text-align: center;
+
+    }
+
+    .rodape .top {
+        height: 20px;
+        background-color: #BB87E9;
+        margin-top: -100px
+    }
+
+    .rodape-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .rodape nav {
+        flex: 1;
+        min-width: 200px;
+        margin: 10px;
+        text-align: left;
+    }
+
+    .rodape h1 {
+        font-size: 15pt;
+        margin-bottom: 10px;
+    }
+
+    .rodape ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .rodape ul li {
+        display: flex;
+        align-items: center;
+        /* Alinha o ícone e o texto */
+        margin-bottom: 8px;
+        font-family: 'interRegular';
+        color: #ffffff;
+    }
+
+    .rodape ul li img {
+        width: 18px;
+        /* Tamanho uniforme dos ícones */
+        height: 18px;
+        margin-right: 8px;
+        /* Espaço entre o ícone e o texto */
+    }
+
+    .rodape a {
+        color: #ffffff;
+        font-weight: normal;
+
+    }
+
+    .rodape a:hover {
+        color: #fff;
+
+    }
+
+    .rodape p {
+        margin-top: 30px;
+        font-size: 15pt;
+        color: #ffffff;
+    }
+
+    /*Páginas Livro*/
+    .Colunas {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin-left: 100px;
+
+    }
+
+    .Colunas button {
+        display: flex;
+        align-items: center;
+        background-color: #8F5BBC;
+        color: white;
+        font-size: 20px;
+        font-family: 'interRegular';
+        border: none;
+        padding: 10px 20px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .Colunas .quantidade{
+        
+        font-size: 15px;
+    }
+    .botoes-1 .adicionar{
+        background-color: #8F5BBC;
+        color: white;
+        font-size: 15px;
+        border-radius: 15px;
+        border: none;
+        width: 180px;
+        height: 30px;
+
+
+
+
+    }
+    .botoes-1 .comprar{
+        background-color: #8F5BBC;
+        color: white;
+        font-size: 15px;
+        border-radius: 15px;
+        border: none;
+        width: 130px;
+        height: 30px;
+
+
+    }
+    .botoes-1{
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 20px;
+        padding-right: 100px;
+    }
+
+
+
+
+    .imgInfo {
+        text-align: center;
+    }
+
+    .imgInfo h3 {
+        margin-top: 10px;
+    }
+
+    .imgInfo button {
+        margin-top: 10px;
+    }
+
+    .Colunas .imgInfo img {
+        margin-top: 50px;
+        height: 250px;
+        border-radius: 10px;
+
+    }
+
+    .Colunas h1 {
+        margin-top: 20px;
+        font-size: 20pt;
+        padding-left: 50px;
+        padding-right: 100px;
+        line-height: 19pt;
+    }
+
+    .Colunas h2 {
+        padding-left: 50px;
+        padding-right: 100px;
+        line-height: 20pt;
+    }
+
+    .Colunas p {
+        text-align: justify;
+        font-family: 'interRegular';
+        line-height: 19pt;
+        padding-left: 50px;
+
+        margin-top: 10px;
+    }
+
+    .EditoraePub {
+        display: flex;
+        margin-left: 30px;
+    }
+
+    .EditoraePub .bold {
+        font-family: 'interSemiBold';
+    }
+
+    .editora {
+        text-align: center;
+    }
+
+    .publicacao {
+        text-align: center;
+    }
+
+
+
+    /* RESPONSIVO 1024PX */
+    @media (max-width: 1024px) {
+        .LogoNav {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .LogoNav img {
+            margin-top: -31px;
+            height: 148px;
+            padding-right: 535px;
+            padding-left: 21px;
+        }
+
+
+        /* Estilizando a navegação */
+        .LogoNav nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            /* Deixa os itens na mesma linha */
+            margin-top: 31px;
+        }
+
+        /* Espaço entre os links */
+        nav ul li {
+            margin-right: 40px;
+        }
+
+        /* Estilo dos links */
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .SecaoAchados .livrosFiccao {
+
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 140px;
+            padding-right: 73px;
+
+        }
+
+        .SecaoAchados .h2 h2 {
+            padding-left: 60px;
+        }
+
+        .SecaoAchados .livrosRomance {
+
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 140px;
+            padding-right: 73px;
+
+        }
+
+        .SecaoAchados .secaoSerie {
+
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 120px;
+            padding-right: 83px;
+        }
+
+
+
+
+    }
