@@ -33,7 +33,6 @@ class HomeController extends Controller
         $dados['serie'] = $serie;
 
     
-
         // Teste: exibe a estrutura do array
         var_dump($dados['serie']);
 

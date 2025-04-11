@@ -1,42 +1,63 @@
-<section class="Colunas">
-    <div class="imgInfo">
-        <img src="img/senhoritaurora.png" alt="">
-        <h3>Preço</h3>
-        <p>R$50,00</p>
-        <button class="quantidade">Quantidade: 100</button>
-    </div>
+<!DOCTYPE html> <!--Tag para identificar o HTML5-->
+<html lang="pt-br"> <!--Linguagem da página-->
+ 
+<head>
+    <meta charset="UTF-8"> <!--Padronização da língua-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Autoriza a codificação para responsividade-->
+    <!-- <link rel="shortcut icon" href="img/logo_077.png" type="image/x-icon"> -->
+    <title>Home - BooksAndFun</title> <!--Titulo da Guia-->
+    <!--RESET SEMPRE O PRIMEIRO LINK-->
+    <link rel="stylesheet" href="css/reset.css">
+ 
+    <!--Animação do Carrossel Slick-->
+ 
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+ 
+     <!--Animação do video-->
+    <link rel="stylesheet" href="css/lity.css">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+       
+    <!--MINHA FOLHA DE ESTILO SEMPRE SERÁ O ÚLTIMO LINK-->
+    <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+ 
+<body>
+    <header>
+    <?php require_once('template/menu.php');?>
+    </header>
+    <main>
+    <?php require_once('template/livro.php');?>
 
+    </main>
+    <footer>
+    <?php require_once('template/rodape.php');?>
+    </footer>
+</body>
 
-    <div class="SobreLivro">
-        <h1>Senhorita Aurora</h1>
-        <h2>Babi A. Sette</h2>
-        <p>Nicole é uma jovem bailarina e está prestes a realizar seu sonho: estrear no papel principal em uma peça na Companhia de Ballet de Londres. Tudo estaria perfeito se não fosse pela presença de um dos seus diretores, o temido Daniel Hunter, um maestro prodígio de temperamento difícil, com um humor sombrio e que desperta em Nicole sentimentos contraditórios.
-            Quando uma tempestade de neve isola os dois em uma mansão centenária, Nicole e Daniel serão obrigados a encarar não apenas os segredos que atormentam o maestro, mas também uma paixão proibida ― e avassaladora ― que nasce entre eles.
-            Entre a tão sonhada carreira na dança, um amor intenso como ela nunca sentiu e a própria segurança, Nicole se verá diante de escolhas que parecem impossíveis. E caberá a ela resgatar Daniel de seu próprio passado...
-            Senhorita Aurora é um romance poderoso, tocante e perturbador, que mostra que todos merecem uma segunda chance, até mesmo alguém com fama de monstro.
-             </p>
-        <div class="EditoraePub">
+        
 
-            <div class="editora">
-
-                <img src="img/editora.png" alt="">
-                <p class="bold">Verus</p>
-            </div>
-
-            <div class="publicacao">
-
-                <img src="img/calendario.png" alt="">
-                <p class="bold">18 abril 2018</p>
-            </div>
-
-
-
-        </div>
-
-    </div>
-
-</section>
-<div class="botoes-1">
-    <button class="adicionar">adicionar ao carrinho</button>
-    <button class="comprar">comprar agora</button>
-</div>
+       
+ 
+      
+ 
+ 
+   
+    
+  
+    
+        
+ 
+    <!--JQUERY obrigatório para animação-->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-3.5.0.min.js"></script>
+    <!--Animação CARROSSEL Slick-->
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <script src="js/lity.js"></script>
+    <!--Minha animação sempre por último-->
+    <script type="text/javascript" src="js/js.animation.js"></script>
+</body>
+</html>
+ 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Autoriza a codificação para responsividade-->
     <!-- <link rel="shortcut icon" href="img/logo_077.png" type="image/x-icon"> -->
-    <title>Blog - BooksAndFun</title> <!--Titulo da Guia-->
+    <title><?php echo $dados['titulo']?></title> <!--Titulo da Guia-->
     <!--RESET SEMPRE O PRIMEIRO LINK-->
     <link rel="stylesheet" href="assets/css/reset.css">
  

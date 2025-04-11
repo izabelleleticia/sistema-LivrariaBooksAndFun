@@ -7,7 +7,7 @@
 
             <?php foreach ($destaques as $livro): ?>
                 <div>
-                    <a href="livro?id=<?php echo $livro['id_livros']; ?>">
+                    <a href="livro/detalhe/<?php echo $livro['id_livros']; ?>">
                     <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem']; ?>" alt="">
                     </a>
                     <p>
@@ -15,7 +15,7 @@
                     
                     </p>
                     <p>
-                        <?php echo $livro['preco']; ?><br>
+                        RS$<?php echo $livro['preco']; ?><br>
                     </p>
                 </div>
             <?php endforeach; ?>

@@ -10,9 +10,28 @@ class LivroController extends Controller
         $dados = array();
         $dados['titulo_pagina'] = 'Livro | Livraria BooksAndFun';
         $dados['livros'] = $livroModel->getLivro(); 
-        $this->carregarViews('livro', $dados);
-        var_dump($dados);
+       
+
+       
+        var_dump($dados['livros']);
+
+    }
+
+    public function detalhe($id){
+
+      
+        $dados = array();
+        $dados['titulo_pagina'] = 'Livro | Livraria BooksAndFun';
+
+        $livroModel = new Livro();
+        $livros = $livroModel->getLivroInfo($id);
+
+        $dados['livros'] = $livros;
+        $this->carregarViews('detalhe-livro', $dados);
 
 
     }
+
+    
+
 }
