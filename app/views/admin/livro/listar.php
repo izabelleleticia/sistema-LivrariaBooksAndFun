@@ -98,53 +98,58 @@
         </div>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    function abrirModal(id_livros) {
+        // Verifica se o modal já está aberto
+        const modalElement = document.getElementById('desativarModal');
+        const modal = new bootstrap.Modal(modalElement);
 
-<script>document.addEventListener('DOMContentLoaded', function () {
-
-        function abrirModal(id_servico) {
-            // Verifica se o modal já está aberto
-            const modalElement = document.getElementById('desativarModal');
-            const modal = new bootstrap.Modal(modalElement);
-
-            // Se o modal não estiver visível, o abre
-            if (!modalElement.classList.contains('show')) {
-                document.getElementById('idParaDesativar').value = id_servico;
-                modal.show();
-            }
+        // Se o modal não estiver visível, o abre
+        if (!modalElement.classList.contains('show')) {
+            // Definindo o ID do livro/serviço para o campo oculto
+            document.getElementById('idParaDesativar').value = id_livros;
+            modal.show();
         }
+    }
 
-        document.getElementById('btnDesativar').addEventListener('click', function () {
-            const idServico = document.getElementById('idParaDesativar').value;
-            if (idServico) {
-                console.log("Id recuperado: " + idServico);
-                desativarServico(idServico);
-            }
-        });
-
-        function desativarServico(idServico) {
-            fetch(`http://localhost/sistema/public/servicos/desativar/${idServico}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Erro HTTP: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Resposta com sucesso
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('desativarModal'));
-                    modal.hide();
-                    location.reload();
-                })
-                .catch(error => {
-                    alert("Erro na requisição. Verifique a conexão com o servidor");
-                })
+    document.getElementById('btnDesativar').addEventListener('click', function () {
+        const idLivro = document.getElementById('idParaDesativar').value;
+        if (idLivro) {
+            console.log("Id recuperado: " + idLivro);
+            desativarLivro(idLivro);
         }
-
-        window.abrirModal = abrirModal;
     });
+
+    function desativarLivro(idLivro) {
+        fetch(`http://localhost/sistema-LivrariaBooksAndFun/public/livro/desativar/${idLivro}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(`Erro HTTP: ${response.status}, ${data.mensagem}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Resposta com sucesso
+            console.log(data.mensagem); // Log da resposta
+            const modal = bootstrap.Modal.getInstance(document.getElementById('desativarModal'));
+            modal.hide();
+            location.reload();  // Recarrega a página após sucesso
+        })
+        .catch(error => {
+            alert("Erro na requisição. Verifique a conexão com o servidor: " + error.message);
+        });
+    }
+
+    // Expor a função abrirModal para que seja usada no HTML ou em outros scripts
+    window.abrirModal = abrirModal;
+});
+
 </script>

@@ -1,5 +1,8 @@
-<form class="row g-3" method="POST" enctype="multipart/form-data" action="<?php echo BASE_URL; ?>livro/editar/<?php echo $dadosLivro['id_livros']; ?>">
- <?php var_dump($dadosLivro);?>
+<form class="row g-3" method="POST" enctype="multipart/form-data" action="http://localhost/sistema-LivrariaBooksAndFun/public/livro/adicionar">
+
+ <!-- <?php var_dump($dadosLivro);?> -->
+ <!-- <?php var_dump($dados['editoras']);?> -->
+ 
     <input type="hidden" name="id_livros" value="<?php echo $dadosLivro['id_livros']; ?>">
     <div class="col-md-2">
     <?php
@@ -11,7 +14,7 @@
     
     <img id="preview" class="rounded-2" src="<?= htmlspecialchars($fotoPath) ?>" 
          alt="Foto do serviço" 
-         style="width:100%; height:150px; object-fit:cover; cursor:pointer;"
+         style="width:100%; height:320px; object-fit:cover; cursor:pointer;"
          title="Clique para alterar a foto">
          
     <input type="file" name="imagem" id="imagem" style="display:none;" accept="image/*">
@@ -25,12 +28,14 @@
                 <input type="text" class="form-control" id="nome_servico" name="titulo_livros" required 
                        value="<?php echo $dadosLivro['titulo_livros']; ?>">
             </div>
-
+            <div class="col-md-9">
+        <div class="row">
             <div class="col-12">
-                <label for="descricao_genero" class="form-label">Gênero</label>
-                <textarea class="form-control" id="descricao_genero" name="descricao_genero" rows="3" required>
-                    <?php echo trim($dadosLivro['descricao_genero']);?>
-                </textarea>
+                <label for="descricao_genero" class="form-label">Genero</label>
+                <input type="text" class="form-control" id="descricao_genero" name="descricao_genero" required 
+                       value="<?php echo $dadosLivro['descricao_genero']; ?>">
+            </div>
+           
             </div>
         </div>
 
@@ -47,51 +52,37 @@
                        value="<?php echo $dadosLivro['estoque']; ?>">
             </div>
         </div>
+        <div class="col-md-6">
+    <label for="ano_publicacao" class="form-label">Ano de Publicação</label>
+    <input type="number" class="form-control" id="ano_publicacao" name="ano_publicacao" 
+           required value="<?php echo $dadosLivro['ano_publicacao'] ?? ''; ?>">
+</div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <label for="alt_tipo" class="form-label">Editora</label>
-                <input type="text" class="form-control" id="alt_tipo" name="alt_tipo" required 
-                       value="<?php echo $dadosLivro['nome_editora']; ?>">
-            </div>
+        <div class="col-md-4">
+        <label for="nome_editora" class="form-label">Editora</label>
+<!-- <?php var_dump($dados['editoras']); ?> -->
 
-            <!-- <div class="col-md-4">
-                <label for="id_especialidade" class="form-label">Especialidade</label>
-                <select class="form-select" id="id_especialidade" name="id_especialidade" required>
-                    <option value="" disabled selected>Selecione uma especialidade</option>
-                    <?php foreach ($especialidade as $linha): ?>
-                        <option value="<?php echo $linha['id_especialidade']; ?>"
-                            <?php echo ($linha['id_especialidade'] == $dadosServico['id_especialidade']) ? 'selected' : ''; ?>>
-                            <?php echo $linha['nome_especialidade']; ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="col-md-4">
-                <label for="status_servico" class="form-label">Status</label>
-                <select class="form-select" id="status_servico" name="status_servico" required>
-                    <option value="<?php echo $dadosServico['status_servico']; ?>" selected>
-                        <?php echo $dadosServico['status_servico']; ?>
-                    </option>
-                    <option value="ATIVO">ATIVO</option>
-                    <option value="INATIVO">INATIVO</option>
-                    <option value="DESATIVADO">DESATIVADO</option>
-                </select>
-            </div>
-        </div> -->
+<select class="form-select" id="nome_editora" name="nome_editora" required>
+    <?php foreach ($dados['editoras'] as $linha): ?>
+        <option value="<?php echo $linha['nome_editora']; ?>" 
+            <?php echo ($linha['nome_editora'] == $dadosLivro['nome_editora']) ? 'selected' : ''; ?>>
+            <?php echo $linha['nome_editora']; ?>
+        </option>
+    <?php endforeach; ?>
+</select>
 
         <div class="col-md-12" style="display: flex; justify-content: space-between; margin-top: 20px;">
-            <button type="submit" class="btn btn-primary">Editar Serviço</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
             <button type="reset" class="btn btn-danger">Limpar</button>
         </div>
     </div>
 </form>
 
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const previewImg = document.getElementById('preview');
-    const fileInput = document.getElementById('foto_servico');
+    const fileInput = document.getElementById('imagem');
 
     previewImg.addEventListener("click", function () {
         fileInput.click();
