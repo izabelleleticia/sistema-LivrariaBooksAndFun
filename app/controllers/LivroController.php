@@ -58,11 +58,13 @@ class LivroController extends Controller
             // Pega os dados do formulário (corrigindo os campos para os corretos)
             $id_livros = filter_input(INPUT_POST, 'id_livros', FILTER_SANITIZE_SPECIAL_CHARS);
             $titulo_livros = filter_input(INPUT_POST, 'titulo_livros', FILTER_SANITIZE_SPECIAL_CHARS);
+            $nome_autor = filter_input(INPUT_POST, 'nome_autor', FILTER_SANITIZE_SPECIAL_CHARS);
             $descricao_genero = filter_input(INPUT_POST, 'descricao_genero', FILTER_SANITIZE_SPECIAL_CHARS);
             $ano_publicacao = filter_input(INPUT_POST, 'ano_publicacao', FILTER_SANITIZE_NUMBER_INT);
             $preco = filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             $estoque = filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT);
             $nome_editora = filter_input(INPUT_POST, 'nome_editora', FILTER_SANITIZE_SPECIAL_CHARS);
+            $nome_serie = filter_input(INPUT_POST, 'nome_editora', FILTER_SANITIZE_SPECIAL_CHARS);
 
             // Verifica se os dados obrigatórios estão preenchidos
             if ($titulo_livros && $descricao_genero) {
@@ -78,11 +80,13 @@ class LivroController extends Controller
                 $dadosLivro = array(
                     'id_livros' => $id_livros,
                     'titulo_livros' => $titulo_livros,
+                    'nome_autor' => $nome_autor,
                     'descricao_genero' => $descricao_genero,
                     'ano_publicacao' => $ano_publicacao,
                     'preco' => $preco,
                     'estoque' => $estoque,
                     'nome_editora' => $nome_editora,
+                    'nomeserie' => $nome_serie,
                     'imagem' => $arquivo
                 );
 
@@ -115,6 +119,17 @@ class LivroController extends Controller
         // Buscar as editoras
         $editoraModel = new Editora();
         $dados['editoras'] = $editoraModel->getEditora(); // Agora retorna todas as editoras
+
+        $autorModel = new Autor();
+        $dados['autores'] = $autorModel->getAutores();
+
+        $generoModel = new Genero();
+        $dados['generos'] = $generoModel->getGenero();
+
+        $serieModel = new Series();
+        $dados['series'] = $serieModel->getSerie();
+
+
 
         $dados['conteudo'] = 'admin/livro/editar'; // Define o conteúdo da view
         $this->carregarViews('admin/index', $dados); // Carrega a view

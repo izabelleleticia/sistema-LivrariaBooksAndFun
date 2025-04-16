@@ -11,12 +11,30 @@ class Livro extends Model
     }
     public function getLivroInfo($id)
     {
-        $sql = "SELECT l.id_livros, l.titulo_livros, l.imagem, g.descricao_genero, l.ano_publicacao, l.preco, l.estoque, e.nome_editora FROM tbl_livros AS l INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero INNER JOIN tbl_editoras AS e ON l.id_editora = e.id_editora WHERE id_livros = :id";
+        $sql = "SELECT 
+            l.id_livros, 
+            l.titulo_livros, 
+            l.imagem, 
+            g.descricao_genero, 
+            l.ano_publicacao, 
+            l.preco, 
+            l.estoque, 
+            a.nome_autor, 
+            e.nome_editora, 
+            s.nome_serie
+        FROM tbl_livros AS l 
+        INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero 
+        INNER JOIN tbl_editoras AS e ON l.id_editora = e.id_editora 
+        INNER JOIN tbl_autores AS a ON l.id_autor = a.id_autor 
+        LEFT JOIN tbl_series AS s ON l.id_serie = s.id_serie
+        WHERE l.id_livros = :id";
+    
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         return $stmt->fetch();
     }
+    
     public function getInformacoesLivros()
     {
         $sql = "SELECT l.id_livros, l.titulo_livros, l.imagem, g.descricao_genero, l.ano_publicacao, l.preco, l.estoque, e.nome_editora FROM tbl_livros AS l INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero INNER JOIN tbl_editoras AS e ON l.id_editora = e.id_editora where estoque <> 0 order by titulo_livros";

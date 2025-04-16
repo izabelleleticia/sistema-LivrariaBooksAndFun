@@ -23,17 +23,17 @@
         <label for="nome_autor" class="form-label">Autor</label>
         <input type="text" class="form-control" id="nome_autor" name="nome_autor" required>
     </div>
-    <div class="form-group">
-    <?php var_dump($dados);?>
+    <!-- <div class="form-group">
+    <!-- <?php var_dump($dados);?>
     <label for="nome_autor" class="form-label">Autor</label>
     <select class="form-select" id="nome_autor" name="nome_autor" required>
         <?php foreach ($dados['autores'] as $autor): ?>
             <option value="<?php echo $autor['nome_autor']; ?>">
                 <?php echo $autor['nome_autor']; ?>
             </option>
-        <?php endforeach; ?>
+        <?php endforeach; ?> -->
     </select>
-</div>
+</div> -->
 
     <div class="form-group">
         <label for="estoque" class="form-label">Estoque</label>

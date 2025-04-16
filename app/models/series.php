@@ -7,6 +7,14 @@ class Series extends Model
         $stmt = $this->db->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getSerie()
+    {
+        $sql = "SELECT nome_serie from tbl_series";
+        $stmt = $this->db->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getSeriePorId($id)
     {
         $sql = "SELECT * FROM tbl_series WHERE id_serie = :id";
