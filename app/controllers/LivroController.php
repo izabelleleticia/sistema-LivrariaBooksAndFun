@@ -134,70 +134,85 @@ class LivroController extends Controller
         $dados['conteudo'] = 'admin/livro/editar'; // Define o conteúdo da view
         $this->carregarViews('admin/index', $dados); // Carrega a view
 
-        
+
     }
 
     public function adicionar()
-{
-    // Faz o upload da imagem e adiciona o caminho ao array $dados
-    $imagemCaminho = null;
-    if (!empty($_FILES['imagem']['name'])) {
-        $imagemCaminho = $this->uploadFoto($_FILES['imagem'], 'livro_');
+    {
+        // Faz o upload da imagem e adiciona o caminho ao array $dados
+        $imagemCaminho = null;
+        if (!empty($_FILES['imagem']['name'])) {
+            $imagemCaminho = $this->uploadFoto($_FILES['imagem'], 'livro_');
+        }
+
+        // Pega os dados do formulário
+        $dados = array(
+            'titulo_livros' => filter_input(INPUT_POST, 'titulo_livros', FILTER_SANITIZE_SPECIAL_CHARS),
+            'imagem' => $imagemCaminho,
+            'id_autor' => filter_input(INPUT_POST, 'id_autor', FILTER_SANITIZE_NUMBER_INT),
+            'descricao_genero' => filter_input(INPUT_POST, 'descricao_genero', FILTER_SANITIZE_SPECIAL_CHARS),
+            'nome_autor' => filter_input(INPUT_POST, 'nome_autor', FILTER_SANITIZE_SPECIAL_CHARS),
+            'ano_publicacao' => filter_input(INPUT_POST, 'ano_publicacao', FILTER_SANITIZE_NUMBER_INT),
+            'preco' => filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+            'estoque' => filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT),
+            'nome_editora' => filter_input(INPUT_POST, 'nome_editora', FILTER_SANITIZE_SPECIAL_CHARS),
+            'nome_serie' => filter_input(INPUT_POST, 'nome_serie', FILTER_SANITIZE_SPECIAL_CHARS),
+            'id_serie' => filter_input(INPUT_POST, 'id_serie', FILTER_SANITIZE_NUMBER_INT)
+        );
+
+        $livroModel = new Livro();
+
+        // Chama o método de adicionar no modelo
+        if ($livroModel->adicionar($dados)) {
+            $_SESSION['mensagem'] = 'Livro adicionado com sucesso';
+            $_SESSION['tipo-msg'] = 'sucesso';
+            header('Location: ' . BASE_URL . 'livro/listar');
+            exit;
+        } else {
+            $_SESSION['mensagem'] = 'Erro ao adicionar o livro';
+            $_SESSION['tipo-msg'] = 'erro';
+        }
+
+        // Buscar as editoras
+        $editoraModel = new Editora();
+        $dados['editoras'] = $editoraModel->getEditora(); // Agora retorna todas as editoras
+
+        $autorModel = new Autor();
+        $dados['autores'] = $autorModel->getAutores();
+
+        $generoModel = new Genero();
+        $dados['generos'] = $generoModel->getGenero();
+
+        $serieModel = new Series();
+        $dados['series'] = $serieModel->getSerie();
+
+        var_dump($dados);
+
+        $dados['conteudo'] = 'admin/livro/adicionar';
+        $this->carregarViews('admin/index', $dados);
     }
-
-    // Pega os dados do formulário
-    $dados = array(
-        'titulo_livros' => filter_input(INPUT_POST, 'titulo_livros', FILTER_SANITIZE_SPECIAL_CHARS),
-        'imagem' => $imagemCaminho,
-        'id_autor' => filter_input(INPUT_POST, 'id_autor', FILTER_SANITIZE_NUMBER_INT),
-        'descricao_genero' => filter_input(INPUT_POST, 'descricao_genero', FILTER_SANITIZE_SPECIAL_CHARS),
-        'ano_publicacao' => filter_input(INPUT_POST, 'ano_publicacao', FILTER_SANITIZE_NUMBER_INT),
-        'preco' => filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
-        'estoque' => filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT),
-        'nome_editora' => filter_input(INPUT_POST, 'nome_editora', FILTER_SANITIZE_SPECIAL_CHARS),
-        'id_serie' => filter_input(INPUT_POST, 'id_serie', FILTER_SANITIZE_NUMBER_INT)
-    );
-
-    $livroModel = new Livro();
-
-    // Chama o método de adicionar no modelo
-    if ($livroModel->adicionar($dados)) {
-        $_SESSION['mensagem'] = 'Livro adicionado com sucesso';
-        $_SESSION['tipo-msg'] = 'sucesso';
-        header('Location: ' . BASE_URL . 'livro/listar');
-        exit;
-    } else {
-        $_SESSION['mensagem'] = 'Erro ao adicionar o livro';
-        $_SESSION['tipo-msg'] = 'erro';
-    }
-
-    // Buscar as editoras para o dropdown (caso o form precise ser reexibido)
-    $editoraModel = new Editora();
-    $dados['editoras'] = $editoraModel->getEditora();
-
-    //Buscar autores
-    $autorModel = new Autor();
-    $dados['autores'] = $autorModel->getAutores();
-
-    $dados['conteudo'] = 'admin/livro/adicionar';
-    $this->carregarViews('admin/index', $dados);
-}
 
     public function uploadFoto($file, $nome)
     {
-
         $dir = 'uploads/livros/';
         if (!file_exists($dir)) {
             mkdir($dir, 0755, true);
         }
+
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $nome_foto = uniqid() . $nome . '.' . $ext;
+
+        // Remove espaços e caracteres especiais
+        $nome = preg_replace('/[^a-zA-Z0-9-_]/', '_', $nome);
+
+        $nome_foto = uniqid() . '_' . $nome . '.' . $ext;
+
         if (move_uploaded_file($file['tmp_name'], $dir . $nome_foto)) {
             return 'livros/' . $nome_foto;
-
         }
+
         return false;
     }
+
 
     public function desativar($id)
     {
@@ -207,13 +222,13 @@ class LivroController extends Controller
             echo json_encode(['status' => 'erro', 'mensagem' => 'Método não permitido']);
             exit;
         }
-    
+
         // Define o tipo de conteúdo da resposta
         header('Content-Type: application/json');
-    
+
         // Chama o método do modelo para desativar o livro
         $resultado = $this->livroModel->desativarLivro($id);
-    
+
         if ($resultado) {
             // Resposta de sucesso
             echo json_encode(['status' => 'sucesso', 'mensagem' => 'Livro desativado com sucesso']);
@@ -222,11 +237,11 @@ class LivroController extends Controller
             http_response_code(500); // erro interno do servidor
             echo json_encode(['status' => 'erro', 'mensagem' => 'Erro ao desativar o livro']);
         }
-    
+
         // Finaliza a execução para evitar retorno de dados adicionais
         exit;
     }
-    
+
     public function desativarLivro($id)
     {
         // Atualiza o estoque para 0, indicando que o livro foi desativado
@@ -235,6 +250,6 @@ class LivroController extends Controller
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
-    
+
 }
 

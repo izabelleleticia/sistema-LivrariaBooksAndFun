@@ -25,16 +25,16 @@ class Livro extends Model
         FROM tbl_livros AS l 
         INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero 
         INNER JOIN tbl_editoras AS e ON l.id_editora = e.id_editora 
-        INNER JOIN tbl_autores AS a ON l.id_autor = a.id_autor 
+        LEFT JOIN tbl_autores AS a ON l.id_autor = a.id_autor 
         LEFT JOIN tbl_series AS s ON l.id_serie = s.id_serie
         WHERE l.id_livros = :id";
-    
+
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         return $stmt->fetch();
     }
-    
+
     public function getInformacoesLivros()
     {
         $sql = "SELECT l.id_livros, l.titulo_livros, l.imagem, g.descricao_genero, l.ano_publicacao, l.preco, l.estoque, e.nome_editora FROM tbl_livros AS l INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero INNER JOIN tbl_editoras AS e ON l.id_editora = e.id_editora where estoque <> 0 order by titulo_livros";
@@ -50,16 +50,16 @@ class Livro extends Model
 
     public function editarLivro($dados)
     {
-        $sql = "UPDATE tbl_livros  
-    INNER JOIN tbl_editoras ON tbl_livros.id_editora = tbl_editoras.id_editora
-INNER JOIN tbl_generos ON tbl_livros.id_genero = tbl_generos.id_genero
-SET
-            tbl_livros.titulo_livros = :titulo_livros,
-            tbl_generos.descricao_genero = :descricao_genero,
-            tbl_livros.ano_publicacao = :ano_publicacao,
-            tbl_livros.preco = :preco,
-            tbl_livros.estoque = :estoque,
-            tbl_editoras.nome_editora = :nome_editora";
+            $sql = "UPDATE tbl_livros  
+        INNER JOIN tbl_editoras ON tbl_livros.id_editora = tbl_editoras.id_editora
+    INNER JOIN tbl_generos ON tbl_livros.id_genero = tbl_generos.id_genero
+    SET
+                tbl_livros.titulo_livros = :titulo_livros,
+                tbl_generos.descricao_genero = :descricao_genero,
+                tbl_livros.ano_publicacao = :ano_publicacao,
+                tbl_livros.preco = :preco,
+                tbl_livros.estoque = :estoque,
+                tbl_editoras.nome_editora = :nome_editora";
 
 
         // Verifica se a foto foi enviada para ser atualizada
@@ -98,13 +98,19 @@ SET
         // Extrair os dados do array de entrada
         $titulo_livros = $dados['titulo_livros'];
         $imagem = $dados['imagem'];
-        $id_autor = $dados['id_autor'];
+        $nome_autor = $dados['nome_autor'];
         $descricao_genero = $dados['descricao_genero'];
         $ano_publicacao = $dados['ano_publicacao'];
         $preco = $dados['preco'];
         $estoque = $dados['estoque'];
         $nome_editora = $dados['nome_editora'];
         // $id_serie = $dados['id_serie'];
+
+        // Buscar o ID do Autor
+        $stmt = $this->db->prepare("SELECT id_autor FROM tbl_autores WHERE nome_autor = :nome_autor");
+        $stmt->bindParam(':nome_autor', $nome_autor);
+        $stmt->execute();
+        $id_autor = $stmt->fetchColumn();
 
         // Buscar o ID do Gênero
         $stmt = $this->db->prepare("SELECT id_genero FROM tbl_generos WHERE descricao_genero = :descricao_genero");
@@ -119,7 +125,7 @@ SET
         $id_editora = $stmt->fetchColumn();
 
         // Verificar se o Gênero e a Editora existem
-        if (!$id_genero || !$id_editora) {
+        if (!$id_genero || !$id_editora || !$id_autor)  {
             return false; // Ou você pode retornar uma mensagem de erro
         }
 
@@ -147,7 +153,8 @@ SET
 
         return false; // Retorna falso em caso de erro
     }
-    public function desativarLivro($id){
+    public function desativarLivro($id)
+    {
         $sql = "UPDATE tbl_livros SET estoque = 0 WHERE id_livros = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);

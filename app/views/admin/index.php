@@ -30,7 +30,7 @@
 
   <!--begin::Required Plugin(AdminLTE)-->
   <link rel="stylesheet" href="http://localhost/sistema-LivrariaBooksAndFun/public/dash/css/adminlte.css" />
-  
+
   <!--end::Required Plugin(AdminLTE)-->
 
 
@@ -70,13 +70,15 @@
           <!--begin::User Menu Dropdown-->
           <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <img src="<?php BASE_URL ?>dash/assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow" alt="User Image" />
+              <img src="<?php BASE_URL ?>dash/assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow"
+                alt="User Image" />
               <span class="d-none d-md-inline">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
               <!--begin::User Image-->
               <li class="user-header text-bg-primary">
-                <img src="<?php BASE_URL ?>dash/assets/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image" />
+                <img src="<?php BASE_URL ?>dash/assets/img/user2-160x160.jpg" class="rounded-circle shadow"
+                  alt="User Image" />
                 <p>
                   Alexander Pierce - Web Developer
                   <small>Member since Nov. 2023</small>
@@ -138,7 +140,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                <a href="http://localhost/sistema-LivrariaBooksAndFun/public/banner/listar" class="nav-link">
+                  <a href="http://localhost/sistema-LivrariaBooksAndFun/public/banner/listar" class="nav-link">
                     <p>📢 Banners</p>
                   </a>
                 </li>
@@ -150,6 +152,11 @@
                 <li class="nav-item">
                   <a href="http://localhost/sistema-LivrariaBooksAndFun/public/livro/listar" class="nav-link">
                     <p>📰Livros</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="http://localhost/sistema-LivrariaBooksAndFun/public/serie/listar" class="nav-link">
+                    <p>📰Séries</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -337,13 +344,13 @@
           <!--begin::Row-->
           <div class="row">
 
-        <?php
-            if(isset($conteudo)){
+            <?php
+            if (isset($conteudo)) {
               $this->carregarViews($conteudo, $dados);
-            }else{
+            } else {
               echo '<h2> Bem-vindo ao Dashboard BooksAndFun</h2>';
             }
-        ?>
+            ?>
 
           </div>
           <!-- /.row (main row) -->
@@ -369,27 +376,27 @@
     </footer>
     <!--end::Footer-->
   </div>
- 
+
 
   <!--begin::Third Party Plugin(OverlayScrollbars)-->
   <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
     integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ=" crossorigin="anonymous"></script>
   <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
- 
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
-  
+
   <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
   <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-  
-  
+
+
   <script src="<?php BASE_URL ?>dash/js/adminlte.js"></script>
-  
-  
+
+
 </body>
 <!--end::Body-->
 

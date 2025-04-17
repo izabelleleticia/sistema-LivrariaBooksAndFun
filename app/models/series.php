@@ -37,15 +37,20 @@ class Series extends Model
                     st.site_streaming
                 FROM 
                     tbl_series s
-                INNER JOIN 
-                    tbl_Streaming st ON s.id_streaming = st.id_streaming
-                ORDER BY RAND() LIMIT 1"; // sem WHERE s.id_serie = :id
+                JOIN 
+                    tbl_Streaming st ON s.plataforma = st.id_streaming
+                WHERE 
+                    s.id_serie = :id";
     
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(); // sem bindValue!
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function getLivroSerie(){
+    
+        public function getLivroSerie()
+    {
         $sql = "SELECT l.titulo_livros, l.imagem AS imagem_livro, l.preco, s.nome_serie, s.imagem AS imagem_serie 
                 FROM tbl_livros l 
                 INNER JOIN tbl_series s ON l.id_serie = s.id_serie";
@@ -53,8 +58,47 @@ class Series extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna um array associativo com todos os resultados
     }
+    public function getStreaming()
+    {
+        $sql = "SELECT nome_streaming from tbl_Streaming";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna um array associativo com todos os resultados
+
+    }
+    public function editarSerie($id, $dados)
+    {
+        $sql = "UPDATE tbl_series  
+            SET nome_serie = :nome_serie,
+                plataforma = :plataforma,
+                ano_lancamento = :ano_lancamento,
+                genero = :genero,
+                sinopse = :sinopse";
     
+        if (!empty($dados['imagem'])) {
+            $sql .= ", imagem = :imagem";
+        }
     
+        $sql .= " WHERE id_serie = :id";
+    
+        $stmt = $this->db->prepare($sql);
+    
+        $stmt->bindValue(':id', (int) $id, PDO::PARAM_INT);
+        $stmt->bindValue(':nome_serie', $dados['nome_serie']);
+        $stmt->bindValue(':plataforma', $dados['plataforma']);
+        $stmt->bindValue(':ano_lancamento', $dados['ano_lancamento']);
+        $stmt->bindValue(':genero', $dados['genero']);
+        $stmt->bindValue(':sinopse', $dados['sinopse']);
+    
+        if (!empty($dados['imagem'])) {
+            $stmt->bindValue(':imagem', $dados['imagem']);
+        }
+    
+        return $stmt->execute();
+    }
+
+    
+
     // public function getImgStreamingPorId($id){
     //     $sql = "SELECT logo_streaming FROM tbl_streaming WHERE id_streaming = :id ORDER BY RAND()";
     //     $stmt = $this->db->prepare($sql);
