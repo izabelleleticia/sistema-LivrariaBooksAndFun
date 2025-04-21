@@ -1,5 +1,5 @@
 <form class="row g-3" method="POST" enctype="multipart/form-data" action="http://localhost/sistema-LivrariaBooksAndFun/public/livro/editar/<?php echo $dadosLivro['id_livros'];?>">
-
+<?php var_dump ($dadosLivro)?>;
 <input type="hidden" name="id_livros" value="<?php echo $dadosLivro['id_livros']; ?>">
 
 <div class="row">
@@ -24,6 +24,11 @@
         <label for="nome_servico" class="form-label">Título do Livro</label>
         <input type="text" class="form-control" id="nome_servico" name="titulo_livros" required 
                value="<?php echo $dadosLivro['titulo_livros']; ?>">
+    </div>
+    <div class="mb-1">
+        <label for="descricao_livro" class="form-label">Descricão</label>
+        <input type="text" class="form-control" id="descricao_livro" name="descricao_livro" required 
+               value="<?php echo $dadosLivro['descricao_livro']; ?>">
     </div>
 
     <div class="mb-3">

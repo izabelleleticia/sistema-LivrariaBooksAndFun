@@ -289,8 +289,12 @@
         color: #ffffff;
 
     }
+    .background .livro-item{
+        display: flex;
+    }
+    
 
-    .background img {
+    .background .logoImagem {
         height: 50px;
         width: 50px;
         border-radius: 50%;
@@ -305,6 +309,9 @@
         margin-top: 50px;
 
 
+    }
+    .background .teste{
+        display: flex;
     }
 
     .canalStreaming h3 {

@@ -27,6 +27,8 @@
 <body>
     <header>
         <?php require_once('template/menu.php'); ?>
+        <?php require_once('template/banner.php'); ?>
+
     </header>
     <main>
         <?php require_once('template/destaques.php'); ?>

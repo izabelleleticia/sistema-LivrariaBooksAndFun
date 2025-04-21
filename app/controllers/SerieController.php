@@ -82,59 +82,55 @@ class SerieController extends Controller
     $this->carregarViews('admin/index', $dados);
 }
 
-    // public function adicionar()
-    // {
-    //     // Faz o upload da imagem e adiciona o caminho ao array $dados
-    //     $imagemCaminho = null;
-    //     if (!empty($_FILES['imagem']['name'])) {
-    //         $imagemCaminho = $this->uploadFoto($_FILES['imagem'], 'livro_');
-    //     }
+public function adicionar()
+{
+    // Faz o upload da imagem e adiciona o caminho ao array $dados
+    $imagemCaminho = null;
+    if (!empty($_FILES['imagem']['name'])) {
+        $imagemCaminho = $this->uploadFoto($_FILES['imagem'], 'series_'); // Altere o prefixo para 'series_'
+    }
 
-    //     // Pega os dados do formulário
-    //     $dados = array(
-    //         'titulo_livros' => filter_input(INPUT_POST, 'titulo_livros', FILTER_SANITIZE_SPECIAL_CHARS),
-    //         'imagem' => $imagemCaminho,
-    //         'id_autor' => filter_input(INPUT_POST, 'id_autor', FILTER_SANITIZE_NUMBER_INT),
-    //         'descricao_genero' => filter_input(INPUT_POST, 'descricao_genero', FILTER_SANITIZE_SPECIAL_CHARS),
-    //         'nome_autor' => filter_input(INPUT_POST, 'nome_autor', FILTER_SANITIZE_SPECIAL_CHARS),
-    //         'ano_publicacao' => filter_input(INPUT_POST, 'ano_publicacao', FILTER_SANITIZE_NUMBER_INT),
-    //         'preco' => filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
-    //         'estoque' => filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT),
-    //         'nome_editora' => filter_input(INPUT_POST, 'nome_editora', FILTER_SANITIZE_SPECIAL_CHARS),
-    //         'nome_serie' => filter_input(INPUT_POST, 'nome_serie', FILTER_SANITIZE_SPECIAL_CHARS),
-    //         'id_serie' => filter_input(INPUT_POST, 'id_serie', FILTER_SANITIZE_NUMBER_INT)
-    //     );
+    // Pega os dados do formulário
+    $dados = array(
+        'nome_serie' => filter_input(INPUT_POST, 'nome_serie', FILTER_SANITIZE_SPECIAL_CHARS),
+        'plataforma' => filter_input(INPUT_POST, 'plataforma', FILTER_SANITIZE_SPECIAL_CHARS),
+        'ano_lancamento' => filter_input(INPUT_POST, 'ano_lancamento', FILTER_SANITIZE_NUMBER_INT),
+        'genero' => filter_input(INPUT_POST, 'genero', FILTER_SANITIZE_SPECIAL_CHARS),
+        'sinopse' => filter_input(INPUT_POST, 'sinopse', FILTER_SANITIZE_SPECIAL_CHARS),
+        'imagem' => $imagemCaminho, // Caminho da imagem da série
+    );
 
-    //     $livroModel = new Livro();
+    // Verifica se o nome da série foi preenchido corretamente
+    if (empty($dados['nome_serie'])) {
+        $_SESSION['mensagem'] = 'O campo Nome da Série é obrigatório.';
+        $_SESSION['tipo-msg'] = 'erro';
+        $dados['conteudo'] = 'admin/serie/adicionar';
+        $this->carregarViews('admin/index', $dados);
+        return;
+    }
 
-    //     // Chama o método de adicionar no modelo
-    //     if ($livroModel->adicionar($dados)) {
-    //         $_SESSION['mensagem'] = 'Livro adicionado com sucesso';
-    //         $_SESSION['tipo-msg'] = 'sucesso';
-    //         header('Location: ' . BASE_URL . 'livro/listar');
-    //         exit;
-    //     } else {
-    //         $_SESSION['mensagem'] = 'Erro ao adicionar o livro';
-    //         $_SESSION['tipo-msg'] = 'erro';
-    //     }
+    // Cria uma instância do modelo da série
+    $serieModel = new Series();
 
-    //     // Buscar as editoras
-    //     $editoraModel = new Editora();
-    //     $dados['editoras'] = $editoraModel->getEditora(); // Agora retorna todas as editoras
+    // Chama o método de adicionar no modelo
+    if ($serieModel->AdicionarSerie($dados)) {
+        $_SESSION['mensagem'] = 'Série adicionada com sucesso';
+        $_SESSION['tipo-msg'] = 'sucesso';
+        header('Location: ' . BASE_URL . 'serie/listar'); // Redireciona para a página de listagem de séries
+        exit;
+    } else {
+        $_SESSION['mensagem'] = 'Erro ao adicionar a série';
+        $_SESSION['tipo-msg'] = 'erro';
+    }
 
-    //     $autorModel = new Autor();
-    //     $dados['autores'] = $autorModel->getAutores();
+    // Mantém os dados para debug, caso necessário
+    var_dump($dados); // Para depuração
 
-    //     $generoModel = new Genero();
-    //     $dados['generos'] = $generoModel->getGenero();
+    // Define o conteúdo da página
+    $dados['conteudo'] = 'admin/serie/adicionar';
+    $this->carregarViews('admin/index', $dados);
+}
 
-    //     $serieModel = new Series();
-    //     $dados['series'] = $serieModel->getSerie();
-
-    //     var_dump($dados);
-
-    //     $dados['conteudo'] = 'admin/livro/adicionar';
-    //     $this->carregarViews('admin/index', $dados);
 
 
     public function uploadFoto($file, $nome)

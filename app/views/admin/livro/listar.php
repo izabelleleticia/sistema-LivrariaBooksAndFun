@@ -6,11 +6,9 @@
         <tr>
             <th scope="col">Foto</th>
             <th scope="col">Título</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Ano Publicação</th>
+            <th scope="col">Gênero</th>
             <th scope="col">Preço</th>
             <th scope="col">Estoque</th>
-            <th scope="col">Especialidade</th>
             <th>Editar</th>
             <th>Desativar</th>
         </tr>
@@ -47,15 +45,12 @@
                     <div class="img-tbl">
                         <img src="<?php echo $urlFoto; ?> " class="img-thumbnail" alt="<?php echo $linha['imagem']; ?>">
                     </div>
-                    <?php var_dump($urlFoto)?>
+                    <!-- <?php var_dump($urlFoto)?> -->
                 </td>
                 <td scope="col"><?php echo $linha['titulo_livros']; ?></td>
                 <td scope="col"><?php echo $linha['descricao_genero']; ?></td>
-                <td scope="col"><?php echo $linha['ano_publicacao']; ?></td>
                 <td scope="col"><?php echo $linha['preco']; ?></td>
                 <td scope="col"><?php echo $linha['estoque']; ?></td>
-                <td scope="col"><?php echo $linha['nome_editora']; ?></td>
-                <?php var_dump($linha); ?>
                 <td>
                     <a href="<?php echo 'http://localhost/sistema-LivrariaBooksAndFun/public/livro/editar/' . $linha['id_livros']; ?>"
                         class="btn btn-primary">

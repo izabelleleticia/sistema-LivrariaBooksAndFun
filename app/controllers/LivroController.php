@@ -58,6 +58,7 @@ class LivroController extends Controller
             // Pega os dados do formulário (corrigindo os campos para os corretos)
             $id_livros = filter_input(INPUT_POST, 'id_livros', FILTER_SANITIZE_SPECIAL_CHARS);
             $titulo_livros = filter_input(INPUT_POST, 'titulo_livros', FILTER_SANITIZE_SPECIAL_CHARS);
+            $descricao_livro = filter_input(INPUT_POST, 'descricao_livro', FILTER_SANITIZE_SPECIAL_CHARS);
             $nome_autor = filter_input(INPUT_POST, 'nome_autor', FILTER_SANITIZE_SPECIAL_CHARS);
             $descricao_genero = filter_input(INPUT_POST, 'descricao_genero', FILTER_SANITIZE_SPECIAL_CHARS);
             $ano_publicacao = filter_input(INPUT_POST, 'ano_publicacao', FILTER_SANITIZE_NUMBER_INT);
@@ -80,6 +81,7 @@ class LivroController extends Controller
                 $dadosLivro = array(
                     'id_livros' => $id_livros,
                     'titulo_livros' => $titulo_livros,
+                    'descricao_livro' => $descricao_livro,
                     'nome_autor' => $nome_autor,
                     'descricao_genero' => $descricao_genero,
                     'ano_publicacao' => $ano_publicacao,
@@ -148,6 +150,7 @@ class LivroController extends Controller
         // Pega os dados do formulário
         $dados = array(
             'titulo_livros' => filter_input(INPUT_POST, 'titulo_livros', FILTER_SANITIZE_SPECIAL_CHARS),
+            'descricao_livro' => filter_input(INPUT_POST, 'descricao_livro', FILTER_SANITIZE_SPECIAL_CHARS),
             'imagem' => $imagemCaminho,
             'id_autor' => filter_input(INPUT_POST, 'id_autor', FILTER_SANITIZE_NUMBER_INT),
             'descricao_genero' => filter_input(INPUT_POST, 'descricao_genero', FILTER_SANITIZE_SPECIAL_CHARS),
@@ -186,7 +189,7 @@ class LivroController extends Controller
         $serieModel = new Series();
         $dados['series'] = $serieModel->getSerie();
 
-        var_dump($dados);
+        // var_dump(value: $dados);
 
         $dados['conteudo'] = 'admin/livro/adicionar';
         $this->carregarViews('admin/index', $dados);

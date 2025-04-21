@@ -4,6 +4,10 @@
         <label for="titulo_livros" class="form-label">Título</label>
         <input type="text" class="form-control" id="titulo_livros" name="titulo_livros" required>
     </div>
+    <div class="form-group">
+        <label for="descricao_livro" class="form-label">Descrição</label>
+        <input type="text" class="form-control" id="descricao_livro" name="descricao_livro" required>
+    </div>
     
     <div class="mb-3">
         <label for="descricao_genero" class="form-label">Gênero</label>
