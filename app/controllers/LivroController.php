@@ -88,7 +88,7 @@ class LivroController extends Controller
                     'preco' => $preco,
                     'estoque' => $estoque,
                     'nome_editora' => $nome_editora,
-                    'nomeserie' => $nome_serie,
+                    'nome_serie' => $nome_serie,
                     'imagem' => $arquivo
                 );
 

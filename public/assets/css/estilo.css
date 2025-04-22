@@ -256,22 +256,30 @@
 
     .secaoVerao h1 {
         font-family: 'interSemiBold';
-        padding-left: 100px;
+        padding-right: 116px;
         font-size: 20pt;
         color: #8F5BBC;
         line-height: 20pt;
         margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .secaoVerao .imagem {
+        display: flex;
+        justify-content: center;
     }
 
     .secaoVerao img {
-        width: 600px;
-        height: 400px;
+        width: 800px;
+        height: 500px;
         object-fit: cover;
         image-rendering: auto;
         margin-right: 160px;
+        margin-bottom: 5px;
     }
 
-    .secaoSerie{
+    .secaoSerie {
         display: flex;
     }
 
@@ -289,10 +297,11 @@
         color: #ffffff;
 
     }
-    .background .livro-item{
+
+    .background .livro-item {
         display: flex;
     }
-    
+
 
     .background .logoImagem {
         height: 50px;
@@ -310,7 +319,8 @@
 
 
     }
-    .background .teste{
+
+    .background .teste {
         display: flex;
     }
 
@@ -319,6 +329,39 @@
         color: #ffffff;
         font-size: 20pt;
     }
+
+    .teste {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 100px;
+        padding: 20px;
+        justify-content: center;
+        justify-content: center;
+        padding-right: 200px;
+    }
+
+    .livro-item {
+        
+        text-align: center;
+    }
+
+    .livro-item img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        flex: 1 1 200px;
+        /* Cresce, diminui, tamanho base */
+        max-width: 200px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .infos p {
+        margin: 5px 0;
+    }
+
 
     .canalStreaming img {
         margin-top: -13px;
@@ -780,11 +823,13 @@
         cursor: pointer;
         transition: background 0.3s ease;
     }
-    .Colunas .quantidade{
-        
+
+    .Colunas .quantidade {
+
         font-size: 15px;
     }
-    .botoes-1 .adicionar{
+
+    .botoes-1 .adicionar {
         background-color: #8F5BBC;
         color: white;
         font-size: 15px;
@@ -797,7 +842,8 @@
 
 
     }
-    .botoes-1 .comprar{
+
+    .botoes-1 .comprar {
         background-color: #8F5BBC;
         color: white;
         font-size: 15px;
@@ -808,7 +854,8 @@
 
 
     }
-    .botoes-1{
+
+    .botoes-1 {
         display: flex;
         flex-direction: row-reverse;
         gap: 20px;

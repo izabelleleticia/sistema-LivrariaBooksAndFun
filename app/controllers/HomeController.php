@@ -39,7 +39,7 @@ class HomeController extends Controller
         $dados['livrosDaSerie'] = $seriesModel->getLivroSerie($id_serieHome);
         
         // Debug temporário (você pode remover isso depois):
-        var_dump($dados['seriesHome']);
+        // var_dump($dados['seriesHome']);
         
 
 

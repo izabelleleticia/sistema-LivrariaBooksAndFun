@@ -124,7 +124,7 @@ public function adicionar()
     }
 
     // Mantém os dados para debug, caso necessário
-    var_dump($dados); // Para depuração
+   
 
     // Define o conteúdo da página
     $dados['conteudo'] = 'admin/serie/adicionar';
