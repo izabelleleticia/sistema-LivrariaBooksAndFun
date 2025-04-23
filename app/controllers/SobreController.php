@@ -7,9 +7,7 @@ class SobreController extends Controller
         $dados = array();
         $dados['titulo'] = 'Sobre | Livraria BooksAndFun';
 
-        var_dump($dados);
-        
-
+        // var_dump($dados);
         $this->carregarViews('sobre', $dados);
     }
 }

@@ -17,20 +17,29 @@ class Series extends Model
     public function getSeriesHome()
     {
         $sql = "SELECT 
-                    s.id_serie, 
-                    s.nome_serie, 
-                    s.imagem AS imagem_serie, 
-                    s.genero, 
-                    s.sinopse, 
-                    p.nome_streaming, 
-                    p.logo_streaming, 
-                    p.site_streaming,
-                    l.titulo_livros, 
-                    l.imagem AS imagem_livro, 
-                    l.preco
-                FROM tbl_livros AS l
-                INNER JOIN tbl_series AS s ON l.id_serie = s.id_serie
-                INNER JOIN tbl_Streaming AS p ON s.plataforma = p.nome_streaming";
+    s.id_serie, 
+    s.nome_serie, 
+    s.imagem AS imagem_serie, 
+    s.genero, 
+    s.sinopse, 
+    p.nome_streaming, 
+    p.logo_streaming, 
+    p.site_streaming,
+    l.titulo_livros, 
+    l.imagem AS imagem_livro, 
+    l.preco
+FROM tbl_series AS s
+INNER JOIN tbl_livros AS l ON l.id_serie = s.id_serie
+INNER JOIN tbl_Streaming AS p ON s.plataforma = p.nome_streaming
+INNER JOIN (
+    SELECT s.id_serie
+    FROM tbl_series s
+    WHERE s.id_serie IN (
+        SELECT DISTINCT id_serie FROM tbl_livros WHERE id_serie IS NOT NULL
+    )
+    ORDER BY RAND()
+    LIMIT 1
+) AS serie_sorteada ON s.id_serie = serie_sorteada.id_serie";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute();

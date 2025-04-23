@@ -91,7 +91,7 @@
     <div class="col-md-12">
     <label for="id_serie" class="form-label">Série</label>
     <select class="form-select" id="nome_serie" name="nome_serie">
-    <option value="" <?php echo empty($dadosLivro['nome_serie']) ? 'selected' : ''; ?>>Sem série</option>
+    <option value="" <?php echo empty($dadosLivro['nome_serie']) ? 'selected' : ''; ?>></option>
     <?php foreach ($dados['series'] as $linha): ?>
         <option value="<?php echo $linha['nome_serie']; ?>" 
             <?php echo ($linha['nome_serie'] == $dadosLivro['nome_serie']) ? 'selected' : ''; ?>>

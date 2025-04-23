@@ -1,4 +1,3 @@
-<?php var_dump($seriesHome); ?>
 <section class="secaoVerao">
     <div class="linha"></div>
     <header>
@@ -23,7 +22,7 @@
         <article class="canalStreaming">
             <!-- Alterando para usar o índice correto de $seriesHome -->
             <img class="logoImagem" src="<?php echo BASE_URL . 'uploads/' . $seriesHome[0]['logo_streaming']; ?>"
-                 alt="<?php echo $seriesHome[0]['nome_streaming']; ?>">
+                alt="<?php echo $seriesHome[0]['nome_streaming']; ?>">
             <h3><?php echo $seriesHome[0]['nome_streaming']; ?></h3>
         </article>
 
@@ -35,18 +34,16 @@
 
 <h2>Explore os livros que deram origem às adaptações, seja na TV ou no cinema.</h2>
 <section class="teste">
-    <?php if (isset($livrosDaSerie) && is_array($livrosDaSerie)): ?>
-        <?php foreach ($livrosDaSerie as $livro): ?>
-            <article class="livro-item">
-                <div class="infos">
-                    <!-- Acessando corretamente as chaves do livro -->
-                    <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="Capa do livro">
-                    <p><?php echo $livro['titulo_livros']; ?></p>
-                    <p>Preço: R$ <?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
-                </div>
-            </article>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Livros não encontrados.</p>
-    <?php endif; ?>
+    <?php foreach (($dados['seriesHome']) as $livro): ?>
+        <article class="livro-item">
+            <div class="infos">
+                <!-- Acessando corretamente as chaves do livro -->
+                <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="Capa do livro">
+                <p><?php echo $livro['titulo_livros']; ?></p>
+                <p>Preço: R$ <?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
+            </div>
+        </article>
+    <?php endforeach; ?>
+
+
 </section>

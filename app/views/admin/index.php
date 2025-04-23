@@ -164,12 +164,17 @@
                     <p>🎥 Vídeos </p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="http://localhost/sistema-LivrariaBooksAndFun/public/autor/listar" class="nav-link">
+                    <p>Autores </p>
+                  </a>
+                </li>
               </ul>
             </li>
 
             <li class="nav-header">Clientes e Contatos</li>
             <li class="nav-item">
-              <a href="dashboard" class="nav-link">
+              <a href="http://localhost/sistema-LivrariaBooksAndFun/public/cliente/listar" class="nav-link">
                 <p>👥 Clientes</p>
               </a>
             </li>
