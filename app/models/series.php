@@ -14,6 +14,30 @@ class Series extends Model
         $stmt = $this->db->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getSeriesHome()
+    {
+        $sql = "SELECT 
+                    s.id_serie, 
+                    s.nome_serie, 
+                    s.imagem AS imagem_serie, 
+                    s.genero, 
+                    s.sinopse, 
+                    p.nome_streaming, 
+                    p.logo_streaming, 
+                    p.site_streaming,
+                    l.titulo_livros, 
+                    l.imagem AS imagem_livro, 
+                    l.preco
+                FROM tbl_livros AS l
+                INNER JOIN tbl_series AS s ON l.id_serie = s.id_serie
+                INNER JOIN tbl_Streaming AS p ON s.plataforma = p.nome_streaming";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     public function getSeriePorId($id)
     {

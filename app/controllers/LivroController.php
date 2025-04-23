@@ -65,7 +65,7 @@ class LivroController extends Controller
             $preco = filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             $estoque = filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT);
             $nome_editora = filter_input(INPUT_POST, 'nome_editora', FILTER_SANITIZE_SPECIAL_CHARS);
-            $nome_serie = filter_input(INPUT_POST, 'nome_editora', FILTER_SANITIZE_SPECIAL_CHARS);
+            $nome_serie = filter_input(INPUT_POST, 'nome_serie', FILTER_SANITIZE_SPECIAL_CHARS);
 
             // Verifica se os dados obrigatórios estão preenchidos
             if ($titulo_livros && $descricao_genero) {
@@ -130,8 +130,6 @@ class LivroController extends Controller
 
         $serieModel = new Series();
         $dados['series'] = $serieModel->getSerie();
-
-
 
         $dados['conteudo'] = 'admin/livro/editar'; // Define o conteúdo da view
         $this->carregarViews('admin/index', $dados); // Carrega a view

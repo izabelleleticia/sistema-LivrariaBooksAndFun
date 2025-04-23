@@ -36,7 +36,6 @@ class HomeController extends Controller
         
         // 4. Livros da série aleatória (pega o ID da que veio em 'seriesHome')
         $id_serieHome = $dados['seriesHome']['id_serie'];
-        $dados['livrosDaSerie'] = $seriesModel->getLivroSerie($id_serieHome);
         
         // Debug temporário (você pode remover isso depois):
         // var_dump($dados['seriesHome']);

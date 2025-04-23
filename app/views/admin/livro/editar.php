@@ -88,20 +88,20 @@
                required value="<?php echo $dadosLivro['ano_publicacao'] ?? ''; ?>">
     </div>
 
-    
-
     <div class="col-md-12">
-    <label for="nome_serie" class="form-label">Série</label>
+    <label for="id_serie" class="form-label">Série</label>
     <select class="form-select" id="nome_serie" name="nome_serie">
-        <option value="" <?php echo empty($dadosLivro['nome_serie']) ? 'selected' : ''; ?>>Sem série</option>
-        <?php foreach ($dados['series'] as $linha): ?>
-            <option value="<?php echo $linha['nome_serie']; ?>" 
-                <?php echo ($linha['nome_serie'] == $dadosLivro['nome_serie']) ? 'selected' : ''; ?>>
-                <?php echo $linha['nome_serie']; ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+    <option value="" <?php echo empty($dadosLivro['nome_serie']) ? 'selected' : ''; ?>>Sem série</option>
+    <?php foreach ($dados['series'] as $linha): ?>
+        <option value="<?php echo $linha['nome_serie']; ?>" 
+            <?php echo ($linha['nome_serie'] == $dadosLivro['nome_serie']) ? 'selected' : ''; ?>>
+            <?php echo $linha['nome_serie']; ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
 </div>
+
 
 </div>
 
