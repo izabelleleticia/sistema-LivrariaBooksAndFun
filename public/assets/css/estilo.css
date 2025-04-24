@@ -341,7 +341,7 @@
     }
 
     .livro-item {
-        
+
         text-align: center;
     }
 
@@ -407,6 +407,7 @@
         /* Cantos arredondados */
         cursor: pointer;
         transition: background 0.3s ease;
+        margin-left: 259px;
     }
 
     .botao button img {
@@ -998,5 +999,211 @@
 
 
 
+    }
+
+    @media (max-width: 320px) {
+        .banner img {
+            height: 425px;
+            width: auto;
+            object-fit: cover;
+            /* ou contain, dependendo do efeito que você quer */
+            display: block;
+            /* remove espaços extras abaixo da imagem */
+        }
+
+        header .right {
+            width: 1280px;
+        }
+
+        header .left {
+
+            width: 1280px;
+        }
+
+        .LogoNav img {
+            padding-right: 516px;
+            padding-left: 74px;
+        }
+
+        .destaques .livrosDestaque {
+            padding-left: 600px;
+        }
+
+        /* .botao {
+            position: relative;
+            left: 20px;
+            
+        } */
+
+        .destaques h1 {
+            text-align: center;
+            margin: 14px 100px;
+            width: 125%;
+
+
+        }
+
+        .SecaoAchados h1 {
+            text-align: center;
+            margin: 15px 467px;
+            width: 100%;
+        }
+
+        .destaques {
+            display: flex;
+            flex-direction: column;
+            /* Faz com que os itens sejam dispostos em coluna */
+        }
+
+        .botao {
+            align-self: flex-end;
+            /* Isso vai alinhar o botão à direita */
+            margin-top: 20px;
+            /* Se quiser adicionar um espaçamento entre o conteúdo e o botão */
+        }
+
+        button {
+            background-color: #007BFF;
+            /* Cor de fundo para o botão */
+            color: white;
+            /* Cor do texto */
+            border: none;
+            /* Remove borda */
+            padding: 10px 20px;
+            /* Tamanho do botão */
+            cursor: pointer;
+            /* Aponta o cursor para o botão */
+            border-radius: 5px;
+            /* Bordas arredondadas */
+        }
+
+        button img {
+            vertical-align: middle;
+            /* Alinha a imagem do ícone com o texto */
+            margin-right: 8px;
+            /* Espaço entre o ícone e o texto */
+        }
+        .SecaoAchados {
+            display: flex;
+            flex-direction: column;
+            align-items: center;  /* Centraliza os itens horizontalmente */
+            padding: 10px; /* Adiciona um pequeno preenchimento */
+        }
+    
+        .AchadosTexto {
+            text-align: center;  /* Centraliza o texto */
+        }
+    
+        .h2 h2 {
+            text-align: center;  /* Centraliza o título das categorias */
+            font-size: 30pt; /* Ajusta o tamanho da fonte */
+            margin: 10px 0; /* Adiciona espaçamento acima e abaixo do título */
+        }
+    
+        .livrosFiccao, .livrosRomance {
+            display: flex;
+            justify-content: center;  /* Centraliza os itens na linha */
+            gap: 15px; /* Espaço entre os itens */
+            width: 100%;  /* Garante que ocupe toda a largura disponível */
+        }
+    
+        .livrosFiccao div, .livrosRomance div {
+            width: 100%;  /* Faz com que cada livro ocupe a largura inteira disponível */
+            text-align: center;  /* Centraliza o texto e as imagens */
+        }
+    
+        .livrosFiccao img, .livrosRomance img {
+            max-width: 120%; /* Ajusta o tamanho das imagens */
+            height: 365px;
+          
+        }
+        .SecaoAchados{
+           
+        }
+        .SecaoAchados p{
+            font-size: 20pt;
+            line-height: 30px;
+        }
+        .SecaoAchados .intro{
+            padding-left: 600px;
+        }
+        .SecaoAchados .livrosFiccao{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 101px;
+            padding-left: 262px;
+            flex-wrap: wrap;
+        }
+        .SecaoAchados .livrosRomance{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 101px;
+            padding-left: 262px;
+            flex-wrap: wrap;
+        }
+        .secaoVerao .linha {
+            width: 1280px;
+        }
+            .secaoVerao img{
+                padding-left: 1433px; 
+
+            }
+            .secaoVerao h1{
+                padding-left: 803px;
+            }
+       
+
+  
+    .background{
+        width: 1280px;
+
+    }
+
+    footer{
+        width: 1280px;
+    }
+    .rodape nav{
+        padding-left: 132px;
+    }
+    .rodape {
+        padding: 20px 10px;
+        text-align: center;
+    }
+    .rodape-container {
+        flex-direction: column;
+        align-items: center;
+        padding-left: 179px;
+       
+    }   
+    .rodape nav h1 {
+        font-size: 20pt;
+        margin-bottom: 8px;
+    }
+    .rodape ul {
+        padding: 0;
+    }
+
+    .rodape li {
+        justify-content: center;
+        font-size: 15pt;
+        margin-bottom: 6px;
+        flex-wrap: wrap;
+    }
+    .rodape li img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .rodape p {
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 1.4;
+        padding-left: 300px;
+    }
+    .rodape h1{
+        text-align: center;
+    }
 
     }

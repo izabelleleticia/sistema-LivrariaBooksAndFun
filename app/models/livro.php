@@ -218,4 +218,19 @@ class Livro extends Model
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+    public function incrementarCliques($id) {
+        $sql = "UPDATE tbl_livros SET cliques = cliques + 1 WHERE id_livros = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
+    
+    public function getLivrosMaisClicados($limite = 5) {
+        $sql = "SELECT * FROM tbl_livros ORDER BY cliques DESC LIMIT :limite";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    
 }

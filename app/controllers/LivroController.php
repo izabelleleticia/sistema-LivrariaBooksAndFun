@@ -31,7 +31,7 @@ class LivroController extends Controller
 
         $livroModel = new Livro();
         $livros = $livroModel->getLivroInfo($id); // Pega os dados do livro específico
-
+        $livroModel->incrementarCliques($id);
         $dados['livros'] = $livros;
         $this->carregarViews('detalhe-livro', $dados); // Carregar a view com os detalhes
     }

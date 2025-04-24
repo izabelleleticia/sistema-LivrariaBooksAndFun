@@ -3,6 +3,8 @@
 
 // Definir uma URL BASE
 define('BASE_URL','http://localhost/sistema-LivrariaBooksAndFun/public/');
+// define('BASE_URL','https://smpsistema.com.br/cliente/booksandfun/public/');
+
 
 
 // Configuração da Data Base

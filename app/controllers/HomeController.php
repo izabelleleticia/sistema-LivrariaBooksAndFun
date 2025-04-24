@@ -11,7 +11,7 @@ class HomeController extends Controller
         $dados['titulo'] = 'Site | Livraria BooksAndFun';
 
         $destaquesModel = new Destaques();
-        $destaques = $destaquesModel->getDestaques();
+        $destaques = $destaquesModel->getLivrosMaisClicados();
         $dados['destaques'] = $destaques;
 
         $ficcaoModel = new Ficcao();

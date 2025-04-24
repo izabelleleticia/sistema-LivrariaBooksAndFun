@@ -1,8 +1,17 @@
-<?php
-class Destaques extends Model{
-    public function getDestaques(){
-        $sql = "SELECT * FROM tbl_livros  WHERE estoque <> 0 ORDER BY RAND() LIMIT 6";
+<?php 
+class Destaques extends model {
+    public function getLivrosMaisClicados()
+    {
+        $sql = "SELECT * FROM tbl_livros 
+                ORDER BY cliques DESC 
+                LIMIT 5";
         $stmt = $this->db->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $livros = $stmt->fetchAll();
+    
+        // Embaralhar os 5 mais clicados para mostrar de forma aleatória
+        shuffle($livros);
+    
+        return $livros;
     }
-}
+}    
+    

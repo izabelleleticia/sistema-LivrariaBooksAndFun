@@ -2,7 +2,7 @@
     <article class="site">
     <div class="AchadosTexto">
     <h1>Seção dos Achados e Perdidos</h1>
-    <p>Ainda está em dúvida sobre o que comprar? Descubra nossas categorias e encontre o que você procura:</p>
+    <p class="intro">Ainda está em dúvida sobre o que comprar? Descubra nossas categorias e encontre o que você procura:</p>
 </div>
 
 <div class="h2">
@@ -43,3 +43,4 @@
     <?php endif; ?>
 </div>
 </article>
+</section>
