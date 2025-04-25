@@ -42,6 +42,7 @@ class Autores extends Model
         $sql = "UPDATE tbl_autores 
                 SET nome_autor = :nome_autor, 
                     nacionalidade_autor = :nacionalidade_autor,
+                    biografia = :biografia,
                     imagem = :imagem
                 WHERE id_autor = :id";
     
@@ -51,6 +52,9 @@ class Autores extends Model
         // Vinculando os parâmetros com os dados recebidos
         $stmt->bindParam(':nome_autor', $dados['nome_autor']);
         $stmt->bindParam(':nacionalidade_autor', $dados['nacionalidade_autor']);
+        $stmt->bindParam(':biografia', $dados['biografia']);
+
+
         $stmt->bindParam(':imagem', $imagem);
     
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -61,29 +65,26 @@ class Autores extends Model
     
 
     
-
-    // Método para adicionar um novo autor
     public function adicionarAutor($dados)
     {
-        // Extrair os dados do array de entrada
         $nome_autor = $dados['nome_autor'];
         $nacionalidade_autor = $dados['nacionalidade_autor'];
-
-        // Verificar se os dados obrigatórios existem
+        $imagem = $dados['imagem'];
+        $biografia = $dados['biografia'];
+    
         if (empty($nome_autor)) {
-            return false; // Se faltar o nome do autor, retorna falso
+            return false;
         }
-
-        // Inserir os dados na tabela de autores
+    
         $stmt = $this->db->prepare("
-            INSERT INTO tbl_autores (nome_autor, nacionalidade_autor)
-            VALUES (:nome_autor, :nacionalidade_autor)
+            INSERT INTO tbl_autores (nome_autor, nacionalidade_autor, imagem, biografia)
+            VALUES (:nome_autor, :nacionalidade_autor, :biografia :imagem)
         ");
-
-        // Bind dos parâmetros
+    
         $stmt->bindParam(':nome_autor', $nome_autor);
         $stmt->bindParam(':nacionalidade_autor', $nacionalidade_autor);
-
-        return $stmt->execute(); // true se sucesso, false se erro
+        $stmt->bindParam(':imagem', $imagem);
+    
+        return $stmt->execute();
     }
-}
+}    

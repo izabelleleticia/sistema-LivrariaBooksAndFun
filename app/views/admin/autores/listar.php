@@ -1,3 +1,4 @@
+<a href="http://localhost/sistema-LivrariaBooksAndFun/public/autor/adicionar" class="btn btn-primary">Cadastrar Autor</a>
 <table class="table table-striped">
     <thead>
         <tr>

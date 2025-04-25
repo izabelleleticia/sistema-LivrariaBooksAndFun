@@ -110,6 +110,7 @@
     <button type="submit" class="btn btn-primary">Editar</button>
     <button type="reset" class="btn btn-danger">Limpar</button>
 </div>
+
 </form>
 
 <script>

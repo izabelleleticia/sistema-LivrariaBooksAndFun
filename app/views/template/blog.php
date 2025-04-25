@@ -39,30 +39,33 @@
     </div>
 </section>
 <section class="curiosidades">
-    <h1>Curiosidades Literárias</h1>
+    <h1>Biografia de nossos autores preferidos</h1>
     <div class="fotoTexto">
-        <img src="<?php echo BASE_URL; ?>assets/img/colleenhoover.svg" alt="">
-        <p>Você certamente conhece a sequência É assim que acaba, não é mesmo?
-            E se eu te disser que não era para ser bem assim? Pois é! Muitos dos livros de
-            Colleen não foram escritos com a intenção de ter continuações, mas o sucesso
-            fez com que ela escrevesse sequências, como É Assim Que Começa
-            (It Starts With Us), a pedido dos fãs.</p>
+        <!-- Exibindo a imagem do autor -->
+        <img src="<?php echo isset($autor['imagem']) && !empty($autor['imagem']) ? BASE_URL . 'uploads/' . $autor['imagem'] : BASE_URL . 'assets/img/semfoto.png'; ?>" alt="Imagem do Autor" class="card-img-top" style="height: 250px; object-fit: cover;">
+        <p><?php echo ($autor['biografia']); ?></p>
     </div>
     <div class="linha">
-        <h2>Colleen Hoover</h2>
+        <h2><?php echo ($autor['nome_autor']); ?></h2>
     </div>
+
+    <!-- Exibindo os livros do autor -->
     <div class="Obras">
         <h3>Conheça suas obras mais famosas</h3>
         <div class="autor">
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/eassimqueacaba.jpg" alt="">
-                <p>É Assim Que Acaba</p>
-            </div>
-            <div>
-                <img src="<?php echo BASE_URL; ?>assets/img/eassimquecomeca.jpg" alt="">
-                <p>É Assim Que Começa</p>
-            </div>
+            <?php if (!empty($autor['livros'])): ?>
+                <?php foreach ($autor['livros'] as $livro): ?>
+                    <div>
+                        <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="">
+                        <p><?php echo $livro['titulo_livros']; ?></p>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Este autor não possui livros cadastrados.</p>
+            <?php endif; ?>
         </div>
+    </div>
+</section>
         <div class="botao"><button><img src="<?php echo BASE_URL; ?>assets/img/comprar.png" alt="">Quero comprar!</button></div>
     </div>
     <div class="Filme">
