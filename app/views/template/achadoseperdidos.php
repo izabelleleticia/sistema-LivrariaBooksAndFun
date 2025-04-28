@@ -13,8 +13,8 @@
     <?php if (!empty($ficcao)) : ?>
         <?php foreach ($ficcao as $livro) : ?>
             <div>
-                <a href="<?php echo BASE_URL . 'livro/' . $livro['id_livros']; ?>">
-                    <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem']; ?>" alt="">
+            <a href="livro/detalhe/<?php echo $livro['id_livros']; ?>">
+            <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem']; ?>" alt="">
                 </a>
                 <p><?php echo $livro['titulo_livros']; ?> <br>R$<?php echo($livro['preco']); ?></p>
             </div>
@@ -32,8 +32,8 @@
     <?php if (!empty($romance)) : ?>
         <?php foreach ($romance as $livro) : ?>
             <div>
-                <a href="<?php echo BASE_URL . 'livro/' . $livro['id_livros']; ?>">
-                    <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem']; ?>" alt="">
+            <a href="livro/detalhe/<?php echo $livro['id_livros']; ?>">
+            <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem']; ?>" alt="">
                 </a>
                 <p><?php echo $livro['titulo_livros']; ?><br>R$<?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
             </div>

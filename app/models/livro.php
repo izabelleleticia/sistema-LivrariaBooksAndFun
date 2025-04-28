@@ -232,5 +232,24 @@ class Livro extends Model
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    
+ 
+    public function pesquisar($query) {
+        $sql = "
+            SELECT l.*, a.nome_autor, l.imagem
+            FROM tbl_livros l
+            LEFT JOIN tbl_generos g ON l.id_genero = g.id_genero
+            LEFT JOIN tbl_autores a ON l.id_autor = a.id_autor
+            WHERE l.titulo_livros LIKE :query 
+            OR a.nome_autor LIKE :query 
+            OR l.descricao_livro LIKE :query
+            OR g.descricao_genero LIKE :query
+        ";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':query', '%' . $query . '%');
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

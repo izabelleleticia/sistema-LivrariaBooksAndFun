@@ -36,7 +36,7 @@
         font-family: 'inter';
         background-color: #ffffff;
     }
-
+ 
     header .right {
         height: 20px;
         background-color: #BB87E9;
@@ -64,8 +64,8 @@
     }
 
     .LogoNav img {
-        height: 200px;
-    }
+        height: 144px;
+        margin-top: -34px;    }
 
     .LogoNav .Imagem {
         margin-top: -60px;
@@ -118,12 +118,170 @@
         color: #ffffff;
         font-weight: bold;
     }
+    /* Estilo para a barra de pesquisa */
+/* Estilo para a barra de pesquisa */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px 15px;
+    max-width: 400px;
+    position: absolute; /* Posiciona a barra de pesquisa de forma absoluta */
+    top: 35px;
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta para centralizar perfeitamente */
+    z-index: 1000; /* Garante que a barra de pesquisa fique acima do conteúdo */
+}
+
+/* Estilo do campo de pesquisa */
+.input-pesquisa {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 20px;
+    background: transparent;
+    color: #333;
+}
+
+/* Estilo do botão de pesquisa */
+.btn-pesquisa {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-pesquisa img {
+    height: 20px;
+}
+
+/* Estilos para a div .right */
+.right {
+    position: relative; /* Necessário para a barra de pesquisa posicionada acima */
+}
+
+/* Estilo do botão de pesquisa */
+.btn-pesquisa {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-pesquisa img {
+    height: 20px;
+}
+/* Página Pesquisa */
+.pesquisa h1{
+
+        font-family: 'interSemiBold';
+        font-size: 25pt;
+        color: #8F5BBC;
+        margin-top: 15px;
+    
+
+}
+    .pesquisa img{
+        height: 155px;
+        border-radius: 10px;
+    }
+    .pesquisa p{
+        line-height: 17px;
+        font-family: 'interRegular';
+    }
+.pesquisa h2{
+    font-size: 15pt;
+}
+ /* Centralizando o conteúdo */
+ body.Pesquisa {
+    font-family: Arial, sans-serif;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.pesquisa-container {
+    width: 90%;
+    max-width: 1200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding-left: 378px;
+
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.pesquisa {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.pesquisa img {
+    width: 200px;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.pesquisa h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.pesquisa p {
+    color: #555;
+}
+
+.pesquisa a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4CAF50;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.pesquisa a:hover {
+    text-decoration: underline;
+}
 
     .banner img {
         height: 425px;
         width: 100%;
     }
+    .banner {
+        position: relative;
+        text-align: center;
+        
+    }
+    
+    .banner div {
+        position: relative;
+    }
+    
+    .banner h1 {
+        position: absolute;
+        top: 20px; /* Distância do topo - ajuste como quiser */
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff; /* Ou a cor que preferir */
+        font-size: 2rem; /* Ajuste o tamanho da fonte */
+        z-index: 2;
+        margin-top: 191px;
 
+    }
     .destaques {
         font-family: 'interRegular';
     }
@@ -357,6 +515,75 @@
         border-radius: 8px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     }
+/* Estilo do Modal */
+.modal {
+    display: none; /* Escondido inicialmente */
+    position: fixed;
+    z-index: 1000;  
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;  /* Inicialmente invisível */
+    transition: opacity 0.5s ease;  /* Aplica fade no modal */
+}
+
+/* Quando o modal for ativado */
+.modal.mostrar {
+    display: block;
+    opacity: 1;  /* Faz o modal aparecer */
+}
+
+/* Imagem dentro do Modal */
+.modal-conteudo {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+    transform: scale(0.8);  /* Começa menor */
+    opacity: 0;  /* Começa invisível */
+    transition: transform 0.5s ease, opacity 0.5s ease;  /* Animação de zoom e fade */
+}
+
+/* Quando o modal for ativado, a imagem faz o zoom e aparece */
+.modal.mostrar .modal-conteudo {
+    transform: scale(1);  /* A imagem cresce */
+    opacity: 1;  /* A imagem se torna visível */
+}
+
+/* Botão de fechar (X) */
+.fechar {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    opacity: 0;  /* Inicialmente invisível */
+    transition: opacity 0.5s ease;  /* Aplica o fade no botão de fechar */
+}
+
+/* Quando o modal for ativado, o botão de fechar aparece */
+.modal.mostrar .fechar {
+    opacity: 1;  /* Faz o botão de fechar aparecer */
+}
+
+/* Efeito de hover no X */
+.fechar:hover,
+.fechar:focus {
+    color: #bbb;
+}
+
+
+
+
+
 
     .infos p {
         margin: 5px 0;
@@ -387,7 +614,6 @@
     .botao {
         display: flex;
         justify-content: center;
-        /* Centraliza o botão */
         margin-top: 20px;
         padding-left: 576px;
     }
@@ -395,9 +621,7 @@
     .botao button {
         display: flex;
         align-items: center;
-        /* Alinha o ícone com o texto */
-        background-color: #8F5BBC;
-        /* Cor do botão */
+       background-color: #8F5BBC;
         color: white;
         font-size: 20px;
         font-family: 'interRegular';
@@ -422,8 +646,8 @@
         background-color: #A95BBC;
         /* Cor ao passar o mouse */
     }
-
-    .blogInfos h1 {
+/* Página Blog */
+    /* .blogInfos h1 {
         margin-top: 20px;
         color: #A95BBC;
         font-family: 'interSemiBold';
@@ -497,32 +721,26 @@
     .curiosidades button {
         display: flex;
         align-items: center;
-        /* Alinha o ícone com o texto */
         background-color: #BB87E9;
-        /* Cor do botão */
         color: white;
         font-size: 20px;
         font-family: 'interSemiBold';
         border: none;
         padding: 10px 20px;
         border-radius: 15px;
-        /* Cantos arredondados */
-        cursor: pointer;
+       cursor: pointer;
         transition: background 0.3s ease;
 
     }
 
     .curiosidades button:hover {
         background-color: #A95BBC;
-        /* Cor ao passar o mouse */
     }
 
     .curiosidades button img {
         width: 20px;
-        /* Ajusta o tamanho do ícone */
         height: 20px;
         margin-right: 8px;
-        /* Espaço entre o ícone e o texto */
     }
 
     .curiosidades .botao {
@@ -620,7 +838,396 @@
         object-fit: cover;
         margin-top: 30px;
         margin-bottom: -5px;
+    } */
+     /* Estilos gerais para a página */
+body {
+    /* font-family: 'interRegular'; */
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    padding: 50px 20px;
+}
+
+/* Estilos para a seção de resenhas e recomendações */
+.blogInfos h1 {
+    font-family: 'interSemiBold';
+    font-size: 2.5rem;
+    text-align: center;
+    color: #8F5BBC;
+    margin-bottom: 20px;
+}
+
+.blogInfos p {
+    font-family: 'interRegular';
+    font-size: 1.2rem;
+    text-align: center;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+.Recomendacoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.Recomendacoes div {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.Recomendacoes div:hover {
+    transform: translateY(-5px);
+}
+
+.Recomendacoes img {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+        border-radius: 10px;
+}
+
+.Recomendacoes p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 0;
+}
+
+.Recomendacoes p br {
+    display: none; /* Remove a quebra de linha se não necessário */
+}
+
+/* Estilos para a seção de curiosidades */
+.curiosidades h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #4A4A4A;
+    margin-bottom: 30px;
+}
+
+.fotoTexto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.fotoTexto img {
+    border-radius: 10px;
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.fotoTexto p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.linha h2 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Estilos para a lista de obras do autor */
+.Obras {
+    text-align: center;
+}
+
+.Obras h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.autor {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.autor div {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.autor img {
+    height: 155px;
+        border-radius: 10px;
+}
+
+.autor p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Estilos para o botão */
+.botao {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.botao button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.botao button:hover {
+    background-color: #45a049;
+}
+
+.botao img {
+    width: 20px;
+    height: auto;
+}
+
+/* Estilos para o filme */
+/* Estilos para a seção de filme */
+.Filme h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #4A4A4A;
+    margin-bottom: 30px;
+}
+
+.Filme img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Estilos para a seção de onde assistir */
+.backInfos h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.Streaming {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.canalStreaming {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.canalStreaming:hover {
+    transform: translateY(-5px);
+}
+
+.canalStreaming img {
+    width: 50px; /* Ajuste a largura das imagens das logos */
+    height: 50px; /* Ajuste a altura para manter o aspecto quadrado */
+    border-radius: 50%; /* Bordas arredondadas */
+}
+
+.canalStreaming p {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Estilo para o parágrafo geral das outras plataformas */
+.backInfos p {
+    font-size: 1rem;
+    color: #777;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .Streaming {
+        flex-direction: column;
+        gap: 15px;
     }
+
+    .canalStreaming {
+        width: 80%; /* Largura reduzida em dispositivos menores */
+        padding: 15px;
+    }
+
+    .canalStreaming img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .canalStreaming p {
+        font-size: 1rem;
+    }
+}
+
+/* Responsividade para telas de até 480px */
+@media (max-width: 480px) {
+    .Recomendacoes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .Recomendacoes div {
+        width: 80%;
+    }
+
+    .fotoTexto {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fotoTexto img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .fotoTexto p {
+        width: 90%;
+    }
+
+    .Streaming {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .canalStreaming {
+        width: 80%;
+        padding: 15px;
+    }
+
+    .canalStreaming img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .canalStreaming p {
+        font-size: 0.9rem;
+    }
+    .LogoNav img{
+        display: none;
+    }
+    .left nav{
+        display: none;
+    }
+}
+/* Responsividade */
+@media (max-width: 1200px) {
+    .Recomendacoes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fotoTexto {
+        flex-direction: column;
+    }
+
+    .fotoTexto img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .Recomendacoes div {
+        padding: 15px;
+    }
+
+    .autor {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .Recomendacoes {
+        grid-template-columns: 1fr;
+    }
+
+    .fotoTexto {
+        flex-direction: column;
+    }
+
+    .fotoTexto img {
+        width: 80%;
+        height: 250px;
+        margin-bottom: 20px;
+    }
+
+    .fotoTexto p {
+        font-size: 1rem;
+    }
+
+    .botao button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .Filme h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .Recomendacoes p {
+        font-size: 1rem;
+    }
+
+    .botao button {
+        font-size: 1rem;
+        padding: 8px 18px;
+    }
+
+    .Recomendacoes img {
+        height: 250px;
+    }
+
+    .autor div {
+        padding: 10px;
+    }
+
+    .autor img {
+        height: 200px;
+    }
+}
+
 
     .formContato {
         padding: 50px 0;
@@ -1117,9 +1724,7 @@
             height: 365px;
           
         }
-        .SecaoAchados{
-           
-        }
+    
         .SecaoAchados p{
             font-size: 20pt;
             line-height: 30px;

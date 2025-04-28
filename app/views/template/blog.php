@@ -4,31 +4,31 @@
     <div class="Recomendacoes">
         <div>
             <img src="<?php echo BASE_URL; ?>assets/img/domquixotee.webp" alt="Domquixote">
-            <p>Dom Quixote <br> 
-            Miguel de Cervantes</p>
+            <p>Dom Quixote <br>
+                Miguel de Cervantes</p>
         </div>
         <div>
             <img src="<?php echo BASE_URL; ?>assets/img/1984.jpg" alt="Domquixote">
             <p>1984 <br>
-            George Orwell
+                George Orwell
             </p>
         </div>
         <div>
             <img src="<?php echo BASE_URL; ?>assets/img/orgulhoepreconceito.webp" alt="Domquixote">
             <p>Orgulho e Preconceito <br>
-            Jane Austen
+                Jane Austen
             </p>
         </div>
         <div>
             <img src="<?php echo BASE_URL; ?>assets/img/osoleparatodos.jpg" alt="Domquixote">
             <p>O Sol é Para Todos <br>
-            Harper Lee
+                Harper Lee
             </p>
         </div>
         <div>
             <img src="<?php echo BASE_URL; ?>assets/img/cemanosdesolidao.jpg" alt="Domquixote">
             <p>Cem Anos de Solidão <br>
-            Gabriel García Márquez
+                Gabriel García Márquez
             </p>
         </div>
         <div>
@@ -56,8 +56,10 @@
             <?php if (!empty($autor['livros'])): ?>
                 <?php foreach ($autor['livros'] as $livro): ?>
                     <div>
-                        <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="">
-                        <p><?php echo $livro['titulo_livros']; ?></p>
+                        <!-- <a href="livro/detalhe/<?php echo $livro['id_livros']; ?>"> -->
+
+                            <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="">
+                            <p><?php echo $livro['titulo_livros']; ?></p>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -66,28 +68,32 @@
         </div>
     </div>
 </section>
-        <div class="botao"><button><img src="<?php echo BASE_URL; ?>assets/img/comprar.png" alt="">Quero comprar!</button></div>
-    </div>
-    <div class="Filme">
-        <h1>É assim que acaba - O filme</h1>
-        <img src="<?php echo BASE_URL; ?>assets/img/eassimqueacabafilme.webp" alt="filme">
-    </div>
-    <div class="backInfos">
-        <h3>Onde assistir?</h3>
-        <div class="Streaming">
-            <div class="canalStreaming">
-                <img src="<?php echo BASE_URL; ?>assets/img/max.webp" alt="max">
-                <p>Disponível para assinantes sem custo adicional.</p>
-            </div>
-            <div class="canalStreaming">
-                <img src="<?php echo BASE_URL; ?>assets/img/amazon.png" alt="amazon">
-                <p>Disponível para compra ou aluguel.</p>
-            </div>
-            <div class="canalStreaming">
-                <img src="<?php echo BASE_URL; ?>assets/img/appletv.webp" alt="appletv">
-                <p>Disponível para compra ou aluguel.</p>
-            </div>
-<p>Além disso, o filme está disponível para compra ou aluguel em outras plataformas digitais, como o YouTube Filmes.</p>
+</div>
+<div class="Filme">
+    <h1>É assim que acaba - O filme</h1>
+    <img src="<?php echo BASE_URL; ?>assets/img/eassimqueacabafilme.webp" alt="filme">
+</div>
+<div class="backInfos">
+    <h3>Onde assistir?</h3>
+    <div class="Streaming">
+        <div class="canalStreaming">
+            <a href="https://www.max.com/" target="_blank"> <img src="<?php echo BASE_URL; ?>assets/img/max.webp" alt="max">
+            </a>
+            <p>Disponível para assinantes sem custo adicional.</p>
         </div>
+        <div class="canalStreaming">
+            <a href="https://www.primevideo.com/" target="_blank"> <img src="<?php echo BASE_URL; ?>assets/img/amazon.png" alt="amazon">
+            </a>
+            <p>Disponível para compra ou aluguel.</p>
+        </div>
+        <div class="canalStreaming">
+            <a href="https://tv.apple.com/br" target="_blank">
+                <img src="<?php echo BASE_URL; ?>assets/img/appletv.webp" alt="appletv">
+
+            </a>
+            <p>Disponível para compra ou aluguel.</p>
+        </div>
+        <p>Além disso, o filme está disponível para compra ou aluguel em outras plataformas digitais, como o YouTube Filmes.</p>
     </div>
+</div>
 </section>

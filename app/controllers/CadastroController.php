@@ -1,19 +1,17 @@
 <?php
 
 
-class CadastroController extends Controller{
+class CadastroController extends Controller
+{
 
-    
-    public function index(){
+
+    public function index()
+    {
         $dados = array();
         $dados['titulo'] = 'Cadastro | Livraria BooksAndFun';
-        $autorModel = new Autores();
-        $autorModel->
+
+        var_dump($dados);
+
         $this->carregarViews('cadastro', $dados);
-       
     }
-    
-
-
-
 }

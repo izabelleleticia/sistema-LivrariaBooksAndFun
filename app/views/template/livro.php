@@ -31,6 +31,12 @@
         </div>
 
     </div>
+    <!-- Modal -->
+<div id="modalImagem" class="modal">
+    <span class="fechar">&times;</span>
+    <img class="modal-conteudo" id="imgModal">
+</div>
+
 
 </section>
 <div class="botoes-1">

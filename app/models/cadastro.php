@@ -1,5 +1,4 @@
-<?php
-require_once "Model.php"; // Importa a conexão com o banco
+<?php 
 
 class Cadastro
 {
@@ -7,23 +6,27 @@ class Cadastro
 
     public function __construct()
     {
-        $conexao = new Model(); // Instancia a conexão
-        $this->pdo = $conexao->getConexao();
+        $model = new Model(); // Instancia a classe Model
+        $this->pdo = $model->getConexao(); // Pega a conexão da instância de Model
     }
-    public function cadastrar($nome, $email, $senha)
-    {
+
+    public function cadastrar($nome, $email, $senha) {
         try {
             $sql = "INSERT INTO tbl_usuarios (nome_usuario, email_usuario, senha_usuario) VALUES (:nome, :email, :senha)";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(":nome", $nome);
             $stmt->bindParam(":email", $email);
 
-            $senhaHash = password_hash($senha, PASSWORD_DEFAULT); // Corrigindo o erro
-            $stmt->bindParam(":senha", $senhaHash); // Agora a variável pode ser passada
+            // Criptografar a senha
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+            $stmt->bindParam(":senha", $senhaHash);
 
+            // Executa o comando de inserção
             $stmt->execute();
+
             return true;
         } catch (PDOException $e) {
+            // Caso ocorra algum erro, retornar a mensagem de erro
             return "Erro ao cadastrar: " . $e->getMessage();
         }
     }
