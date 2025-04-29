@@ -1,6 +1,7 @@
 <section class="secaoVerao">
     <div class="linha"></div>
     <header>
+        <?php var_dump($seriesHome[0]['id_serie'])?>
         <h1>Quando um livro é bom demais... ele ganha as telas.</h1>
         <!-- Acessando corretamente o primeiro elemento de $seriesHome -->
         <h1><?php echo $seriesHome[0]['nome_serie']; ?></h1>
@@ -21,8 +22,9 @@
 
         <article class="canalStreaming">
             <!-- Alterando para usar o índice correto de $seriesHome -->
-            <img class="logoImagem" src="<?php echo BASE_URL . 'uploads/' . $seriesHome[0]['logo_streaming']; ?>"
-                alt="<?php echo $seriesHome[0]['nome_streaming']; ?>">
+             <a href="<?php echo $seriesHome[0]['site_streaming']?>" target="_blank">  <img class="logoImagem" src="<?php echo BASE_URL . 'uploads/' . $seriesHome[0]['logo_streaming']; ?>"
+             alt="<?php echo $seriesHome[0]['nome_streaming']; ?> " ></a>
+          
             <h3><?php echo $seriesHome[0]['nome_streaming']; ?></h3>
         </article>
 

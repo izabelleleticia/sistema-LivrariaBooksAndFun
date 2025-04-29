@@ -1,6 +1,6 @@
 <section class="Colunas">
     <div class="imgInfo">
-        <img src="<?php echo BASE_URL . 'uploads/' .  $livros['imagem'] ?>" alt="">
+        <img src="<?php echo BASE_URL . 'uploads/' . $livros['imagem'] ?>" alt="">
         <h3>Preço</h3>
         <p><?php echo $livros['preco'] ?></p>
         <button class="quantidade">Quantidade: <?php echo $livros['estoque'] ?></button>
@@ -10,7 +10,7 @@
     <div class="SobreLivro">
         <h1><?php echo $livros['titulo_livros'] ?></h1>
         <h2><?php echo $livros['nome_autor'] ?></h2>
-        <p><?php echo $livros['descricao_livro']?></p>
+        <p><?php echo $livros['descricao_livro'] ?></p>
         <h2><?php echo $livros['descricao_genero'] ?></h2>
         <div class="EditoraePub">
 
@@ -31,15 +31,37 @@
         </div>
 
     </div>
+
     <!-- Modal -->
-<div id="modalImagem" class="modal">
-    <span class="fechar">&times;</span>
-    <img class="modal-conteudo" id="imgModal">
-</div>
+    <div id="modalImagem" class="modal">
+        <span class="fechar">&times;</span>
+        <img class="modal-conteudo" id="imgModal">
+    </div>
 
 
 </section>
 <div class="botoes-1">
-    <button class="adicionar">adicionar ao carrinho</button>
-    <button class="comprar">comprar agora</button>
+
+    <div class="WhatsApp">
+      
+       
+        <?php 
+        $mensagem = "Olá! Tenho interesse no livro: " . $livros['titulo_livros'];
+     
+        
+        $mensagem = "Olá! Tenho interesse no livro: " . $livros['titulo_livros'];
+        $link_whatsapp = "https://wa.me/5511934922824?text=" . urlencode($mensagem);
+        ?>
+
+        <a href="<?= $link_whatsapp ?>" target="_blank">Fale no WhatsApp</a>
+
+        
+        <a href="<?= $link_whatsapp ?>" target="_blank">
+            <img src="<?php echo BASE_URL; ?>assets/img/whatsapp.png" width="50" alt="">
+        </a>
+    </div>
 </div>
+
+
+  
+

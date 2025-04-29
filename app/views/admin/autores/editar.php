@@ -1,5 +1,5 @@
 <form class="row g-3" method="POST" enctype="multipart/form-data" action="http://localhost/sistema-LivrariaBooksAndFun/public/autor/editar/<?php echo $autor['id_autor']; ?>">
-    <?php var_dump($autor); ?>
+    <!-- <?php var_dump($autor['imagem']); ?> -->
     <input type="hidden" name="id_autor" value="<?php echo $autor['id_autor']; ?>">
 
     <div class="row">

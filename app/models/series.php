@@ -36,10 +36,11 @@ INNER JOIN (
     FROM tbl_series s
     WHERE s.id_serie IN (
         SELECT DISTINCT id_serie FROM tbl_livros WHERE id_serie IS NOT NULL
-    )
+    ) AND s.id_serie <> 5
     ORDER BY RAND()
     LIMIT 1
 ) AS serie_sorteada ON s.id_serie = serie_sorteada.id_serie";
+
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute();

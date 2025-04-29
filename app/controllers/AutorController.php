@@ -81,9 +81,6 @@ class AutorController extends Controller
         $this->carregarViews('admin/index', $dados);
     }
     
-    
-  
-    
 public function uploadFoto($file, $nome)
 {
     $dir = 'uploads/autores/';
@@ -115,10 +112,7 @@ public function uploadFoto($file, $nome)
 {
     $dados = array();
     // Faz o upload da imagem e adiciona o caminho ao array $dados
-    $imagemCaminho = null;
-    if (!empty($_FILES['imagem']['name'])) {
-        $imagemCaminho = $this->uploadFoto($_FILES['imagem'], 'livro_');
-    }
+   
         
 
     // Verifica se a requisição foi feita por POST (ao submeter o formulário)
@@ -128,7 +122,12 @@ public function uploadFoto($file, $nome)
         $nacionalidade_autor = filter_input(INPUT_POST, 'nacionalidade_autor', FILTER_SANITIZE_SPECIAL_CHARS);
         $biografia = filter_input(INPUT_POST, 'biografia', FILTER_SANITIZE_SPECIAL_CHARS);
 
-
+        $imagemCaminho = null;
+        if (!empty($_FILES['imagem']['name'])) {
+            $imagemCaminho = $this->uploadFoto($_FILES['imagem'], $nome_autor);
+            
+         
+        }
         // Verifica se os dados obrigatórios estão preenchidos
         if ($nome_autor) {
             // Organiza os dados do autor

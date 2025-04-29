@@ -5,7 +5,7 @@ class Autores extends Model
     // Método para listar todos os autores
     public function getAutores()
     {
-        $sql = "SELECT * FROM tbl_autores";
+        $sql = "SELECT * FROM tbl_autores ORDER BY id_autor DESC";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $autores = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -78,12 +78,14 @@ class Autores extends Model
     
         $stmt = $this->db->prepare("
             INSERT INTO tbl_autores (nome_autor, nacionalidade_autor, imagem, biografia)
-            VALUES (:nome_autor, :nacionalidade_autor, :biografia :imagem)
+            VALUES (:nome_autor, :nacionalidade_autor, :biografia, :imagem)
         ");
     
         $stmt->bindParam(':nome_autor', $nome_autor);
         $stmt->bindParam(':nacionalidade_autor', $nacionalidade_autor);
+        $stmt->bindParam(':biografia', $biografia);
         $stmt->bindParam(':imagem', $imagem);
+
     
         return $stmt->execute();
     }

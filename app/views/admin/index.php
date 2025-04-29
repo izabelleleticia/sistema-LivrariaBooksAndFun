@@ -140,8 +140,8 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="http://localhost/sistema-LivrariaBooksAndFun/public/banner/listar" class="nav-link">
-                    <p>📢 Banners</p>
+                  <a href="http://localhost/sistema-LivrariaBooksAndFun/public/venda/listar" class="nav-link">
+                    <p>📢 Vendas</p>
                   </a>
                 </li>
                 <li class="nav-item">

@@ -23,6 +23,7 @@
     <main>
         <?php require_once('template/livro.php'); ?>
     </main>
+    
     <footer>
         <?php require_once('template/rodape.php'); ?>
     </footer>

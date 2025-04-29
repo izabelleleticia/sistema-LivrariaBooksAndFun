@@ -17,6 +17,10 @@
             <label for="nacionalidade_autor">Nacionalidade</label>
             <input type="text" class="form-control" name="nacionalidade_autor" id="nacionalidade_autor">
         </div>
+        <div class="mb-3">
+                <label for="biografia" class="form-label">Biografia</label>
+                <textarea class="form-control" id="biografia" name="biografia" rows="4"></textarea>
+            </div>
 
         <div class="form-group">
             <label for="imagem">Foto do Autor</label>
