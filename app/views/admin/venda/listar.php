@@ -1,4 +1,4 @@
-<a href="http://localhost/sistema-LivrariaBooksAndFun/public/venda/adicionar" class="btn btn-primary">Cadastrar Venda</a>
+'<a href="http://localhost/sistema-LivrariaBooksAndFun/public/venda/adicionar" class="btn btn-primary">Cadastrar Venda</a>
 
 <table class="table table-dark table-striped">
     <thead>
