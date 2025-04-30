@@ -1,7 +1,7 @@
 <section class="Colunas">
     <div class="imgInfo">
-        <img src="<?php echo BASE_URL . 'uploads/' . $livros['imagem'] ?>" alt="">
-        <h3>Preço</h3>
+    <img src="<?php echo BASE_URL . 'uploads/' . $livros['imagem'] ?>" alt="" class="zoom-imagem">
+    <h3>Preço</h3>
         <p><?php echo $livros['preco'] ?></p>
         <button class="quantidade">Quantidade: <?php echo $livros['estoque'] ?></button>
     </div>
@@ -61,6 +61,31 @@
         </a>
     </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var modal = document.getElementById("modalImagem");
+    var modalImg = document.getElementById("imgModal");
+    var img = document.querySelector(".zoom-imagem");
+    var fechar = document.querySelector(".fechar");
+
+    img.addEventListener("click", function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    fechar.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Fechar o modal ao clicar fora da imagem
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+</script>
+
 
 
   

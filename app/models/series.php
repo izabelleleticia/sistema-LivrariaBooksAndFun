@@ -17,6 +17,7 @@ class Series extends Model
     public function getSeriesHome()
     {
         $sql = "SELECT 
+
     s.id_serie, 
     s.nome_serie, 
     s.imagem AS imagem_serie, 
@@ -25,6 +26,7 @@ class Series extends Model
     p.nome_streaming, 
     p.logo_streaming, 
     p.site_streaming,
+    l.id_livros,
     l.titulo_livros, 
     l.imagem AS imagem_livro, 
     l.preco

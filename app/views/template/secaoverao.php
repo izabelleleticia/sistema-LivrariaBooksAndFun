@@ -36,11 +36,15 @@
 
 <h2>Explore os livros que deram origem às adaptações, seja na TV ou no cinema.</h2>
 <section class="teste">
+    <!-- <?php var_dump($livro)?> -->
     <?php foreach (($dados['seriesHome']) as $livro): ?>
         <article class="livro-item">
             <div class="infos">
                 <!-- Acessando corretamente as chaves do livro -->
-                <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="Capa do livro">
+                <a href="livro/detalhe/<?php echo $livro['id_livros']; ?>">
+                 <img src="<?php echo BASE_URL . 'uploads/' . $livro['imagem_livro']; ?>" alt="Capa do livro">
+                 </a>
+               
                 <p><?php echo $livro['titulo_livros']; ?></p>
                 <p>Preço: R$ <?php echo number_format($livro['preco'], 2, ',', '.'); ?></p>
             </div>

@@ -8,7 +8,7 @@ Nosso objetivo é oferecer uma seleção cuidadosa de títulos, desde os grandes
 Além de um acervo diversificado, promovemos eventos literários, clubes de leitura e lançamentos para aproximar leitores e escritores. Nossa missão é tornar cada visita uma experiência única e prazerosa. Venha descobrir sua próxima leitura favorita com a gente!</p>
     </div>
     <div class="Espaco">
-    <img src="<?php echo BASE_URL; ?>assets/img/espaco1.png" alt="">
+   
     </div>
    
 </section>

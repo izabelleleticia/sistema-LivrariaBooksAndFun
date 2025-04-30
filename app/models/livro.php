@@ -38,7 +38,7 @@ class Livro extends Model
 
     public function getInformacoesLivros()
     {
-        $sql = "SELECT l.id_livros, l.titulo_livros, l.imagem, g.descricao_genero, l.ano_publicacao, l.preco, l.estoque, e.nome_editora FROM tbl_livros AS l INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero INNER JOIN tbl_editoras AS e ON l.id_editora = e.id_editora where estoque <> 0 order by titulo_livros";
+        $sql = "SELECT l.id_livros, l.titulo_livros, l.imagem, g.descricao_genero, l.ano_publicacao, l.preco, l.estoque, e.nome_editora FROM tbl_livros AS l INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero LEFT JOIN tbl_editoras AS e ON l.id_editora = e.id_editora order by titulo_livros";
         // Prepara a consulta SQL
         $stmt = $this->db->prepare($sql);
 
