@@ -17,14 +17,11 @@
             $stmt->bindParam(':forma_pagamento', $dados['forma_pagamento'], PDO::PARAM_STR);
             
             // Executando a query
-            if ($stmt->execute()) {
-                return $this->db->lastInsertId(); // Retorna o ID da última venda inserida
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            return "Erro ao adicionar venda: " . $e->getMessage();
-        }
+            return $stmt->execute();
+         } catch (PDOException $e) {
+             return "Erro ao adicionar venda: " . $e->getMessage();
+         }
+
     }
      // Método para adicionar um item de venda
      public function adicionarItemVenda($dados)
@@ -77,4 +74,117 @@
         // Retorna todas as vendas
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function adicionarVendaComItens($dadosVenda, $itensVenda)
+{
+    try {
+        // Inicia a transação
+        $this->db->beginTransaction();
+
+        // Insere a venda
+        $sqlVenda = "INSERT INTO tbl_vendas (id_cliente, data_venda, valor_total, forma_pagamento) 
+                     VALUES (:id_cliente, :data_venda, :valor_total, :forma_pagamento)";
+        $stmtVenda = $this->db->prepare($sqlVenda);
+        $stmtVenda->execute([
+            ':id_cliente' => $dadosVenda['id_cliente'],
+            ':data_venda' => $dadosVenda['data_venda'],
+            ':valor_total' => $dadosVenda['valor_total'],
+            ':forma_pagamento' => $dadosVenda['forma_pagamento']
+        ]);
+
+        // Recupera o ID da venda recém-inserida
+        $id_venda = $this->db->lastInsertId();
+
+        // Prepara o statement para os itens (melhor performance)
+        $sqlItem = "INSERT INTO tbl_itens_vendas (id_venda, id_produto, quantidade, preco_unitario, valor_total_item) 
+                    VALUES (:id_venda, :id_produto, :quantidade, :preco_unitario, :valor_total_item)";
+        $stmtItem = $this->db->prepare($sqlItem);
+
+        foreach ($itensVenda as $item) {
+            $stmtItem->execute([
+                ':id_venda' => $id_venda,
+                ':id_produto' => $item['id_produto'],
+                ':quantidade' => $item['quantidade'],
+                ':preco_unitario' => $item['preco_unitario'],
+                ':valor_total_item' => $item['quantidade'] * $item['preco_unitario']
+            ]);
+        }
+
+        // Finaliza a transação
+        $this->db->commit();
+
+        return $id_venda;
+
+    } catch (PDOException $e) {
+        // Cancela tudo se algo der errado
+        $this->db->rollBack();
+        return "Erro na transação: " . $e->getMessage();
+    }
+}
+    public function listarItensVenda($id_venda)
+    {
+        // Query para pegar os itens de venda e o nome do livro
+        $sql = "SELECT iv.id_item_venda, iv.id_produto, iv.quantidade, iv.preco_unitario, iv.valor_total_item, l.titulo_livros 
+                FROM tbl_itens_vendas iv
+                JOIN tbl_livros l ON iv.id_produto = l.id_livros
+                WHERE iv.id_item_venda = :id_venda";
+        
+        // Preparar e executar a consulta
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id_venda', $id_venda, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        // Retorna todos os itens de venda com o nome do livro
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+public function listarVendaPorId($id_venda)
+{
+    $sql = "SELECT v.id_venda, v.data_venda, v.valor_total, v.forma_pagamento, c.nome_cliente 
+            FROM tbl_vendas v
+            JOIN tbl_clientes c ON v.id_cliente = c.id_cliente
+            WHERE v.id_venda = :id_venda";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':id_venda', $id_venda, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+public function listarTodosItensVendas()
+{
+    $sql = "SELECT 
+                iv.id_item_venda,
+                iv.quantidade,
+                iv.preco_unitario,
+                iv.valor_total_item,
+                l.titulo_livros,
+                l.imagem,
+                c.nome_cliente,
+                v.data_venda
+            FROM tbl_itens_vendas iv
+            JOIN tbl_livros l ON iv.id_produto = l.id_livros
+            JOIN tbl_vendas v ON iv.id_venda = v.id_venda
+            JOIN tbl_clientes c ON v.id_cliente = c.id_cliente
+            ORDER BY v.data_venda DESC";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function contarVendasMesAtual()
+{
+    $sql = "SELECT COUNT(*) AS total_vendas_mes_atual
+            FROM tbl_vendas
+            WHERE MONTH(data_venda) = MONTH(CURDATE())
+              AND YEAR(data_venda) = YEAR(CURDATE())";
+
+$stmt = $this->db->prepare($sql);
+    $stmt->execute();
+
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $resultado['total_vendas_mes_atual'];
+}
+
+
 }

@@ -1,33 +1,48 @@
-<section class="formContato">
-    <article class="site">
-        <h1>LOGIN</h1>
-        <div class="contato-container">
+<!DOCTYPE html> <!--Tag para identificar o HTML5-->
+<html lang="pt-br"> <!--Linguagem da página-->
 
+<head>
+    <meta charset="UTF-8"> <!--Padronização da língua-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Autoriza a codificação para responsividade-->
+    <!-- <link rel="shortcut icon" href="img/logo_077.png" type="image/x-icon"> -->
+    <title><?php echo $dados['titulo']?></title> <!--Titulo da Guia-->
+    <!--RESET SEMPRE O PRIMEIRO LINK-->
+    <link rel="stylesheet" href="assets/css/reset.css">
 
+    <!--Animação do Carrossel Slick-->
 
-        <form action="http://localhost/sistema-LivrariaBooksAndFun/public/login/logar" method="POST" >
-                <div class="campo">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" placeholder="" required>
-                </div>
+    <link rel="stylesheet" type="text/css" href="css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css" />
 
-                <div class="campo">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" placeholder="" required>
-                </div>
+    <!--Animação do video-->
+    <link rel="stylesheet" href="css/lity.css">
 
-                <div class="botoes">
-                    <button type="submit" class="btn-enviar" name="logar">
-                        <img src="<?php echo BASE_URL; ?>assets/img/send.png" alt="Ícone de enviar"> ENVIAR
-                    </button>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-                    <button type="reset" class="btn-enviar">
-                        <img src="<?php echo BASE_URL; ?>assets/img/limpar.png" alt="Ícone de enviar"> LIMPAR
-                    </button>
-                </div>
-            </form>
-        </div>
-    </article>
-</section>
+    <!--MINHA FOLHA DE ESTILO SEMPRE SERÁ O ÚLTIMO LINK-->
+    <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+    <header>
+    <?php require_once('template/menu.php');?>
+    </header>
+    <main>
+    <?php require_once('template/login.php');?>
+    </main>
+    <footer>
+    <?php require_once('template/rodape.php');?>
+    </footer>
 </body>
 
+        <!--JQUERY obrigatório para animação-->
+        <script type="text/javascript" src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-3.5.0.min.js"></script>
+        <!--Animação CARROSSEL Slick-->
+        <script type="text/javascript" src="js/slick.min.js"></script>
+        <script src="js/lity.js"></script>
+        <!--Minha animação sempre por último-->
+        <script type="text/javascript" src="js/js.animation.js"></script>
+</body>
+
+</html>

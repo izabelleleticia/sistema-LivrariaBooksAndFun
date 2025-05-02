@@ -24,25 +24,46 @@
         <select name="forma_pagamento" id="forma_pagamento" class="form-control" required>
             <option value="cartao">Cartão</option>
             <option value="boleto">Boleto</option>
-            <!-- Adicione mais opções conforme necessário -->
         </select>
     </div>
 
     <div class="form-group">
-        <label for="itens_venda">Itens da Venda</label>
+        <label>Itens da Venda</label>
         <div id="itens_venda">
-            <div class="item">
-                <select name="itens_venda[0][id_produto]" class="form-control" required>
+            <div class="item" data-index="0">
+                <select name="itens_venda[0][id_produto]" class="form-control mb-1" required>
                     <option value="" disabled selected>Selecione o Produto</option>
                     <?php foreach ($dados['livros'] as $livros): ?>
                         <option value="<?php echo $livros['id_livros']; ?>"><?php echo $livros['titulo_livros']; ?></option>
                     <?php endforeach; ?>
                 </select>
-                <input type="number" name="itens_venda[0][quantidade]" class="form-control" placeholder="Quantidade" required>
-                <input type="text" name="itens_venda[0][preco_unitario]" class="form-control" placeholder="Preço Unitário" required>
+                <input type="number" name="itens_venda[0][quantidade]" class="form-control mb-1" placeholder="Quantidade" required>
+                <input type="text" name="itens_venda[0][preco_unitario]" class="form-control mb-2" placeholder="Preço Unitário" required>
             </div>
         </div>
+        <button type="button" id="addItem" class="btn btn-secondary mb-3">+ Adicionar Item</button>
     </div>
 
     <button type="submit" class="btn btn-primary">Adicionar Venda</button>
 </form>
+
+<script>
+    let index = 1;
+    document.getElementById('addItem').addEventListener('click', function () {
+        const container = document.getElementById('itens_venda');
+        const itemHTML = `
+            <div class="item" data-index="${index}">
+                <select name="itens_venda[${index}][id_produto]" class="form-control mb-1" required>
+                    <option value="" disabled selected>Selecione o Produto</option>
+                    <?php foreach ($dados['livros'] as $livros): ?>
+                        <option value="<?php echo $livros['id_livros']; ?>"><?php echo $livros['titulo_livros']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <input type="number" name="itens_venda[${index}][quantidade]" class="form-control mb-1" placeholder="Quantidade" required>
+                <input type="text" name="itens_venda[${index}][preco_unitario]" class="form-control mb-2" placeholder="Preço Unitário" required>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', itemHTML);
+        index++;
+    });
+</script>

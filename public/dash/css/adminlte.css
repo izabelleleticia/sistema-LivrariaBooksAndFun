@@ -12990,6 +12990,9 @@ textarea.form-control-lg {
   max-width: var(--lte-sidebar-width);
   transition: min-width 0.3s ease-in-out, max-width 0.3s ease-in-out, margin-left 0.3s ease-in-out, margin-right 0.3s ease-in-out;
 }
+.imgLogo{
+  height: 100px;
+}
 @media (prefers-reduced-motion: reduce) {
   .app-sidebar {
     transition: none;

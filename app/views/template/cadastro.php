@@ -21,11 +21,11 @@
 
                 <div class="botoes">
                     <button type="submit" class="btn-enviar">
-                        <img src="img/send.png" alt="Ícone de enviar"> ENVIAR
+                    <img src="<?php echo BASE_URL; ?>assets/img/send.png" alt="Ícone de enviar"> ENVIAR
                     </button>
 
                     <button type="reset" class="btn-enviar">
-                        <img src="img/limpar.png" alt="Ícone de enviar"> LIMPAR
+                    <img src="<?php echo BASE_URL; ?>assets/img/limpar.png" alt="Ícone de enviar"> LIMPAR
                     </button>
                 </div>
             </form>
