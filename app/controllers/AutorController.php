@@ -14,17 +14,22 @@ class AutorController extends Controller
         var_dump($dados['autores']);
     }
 
-    // Método para desativar autor
     public function desativar($id)
-    {
-        $AutoresModel = new Autores();
-        if ($AutoresModel->desativarAutor($id)) {
-            echo json_encode(['mensagem' => 'Autor desativado com sucesso.']);
-        } else {
-            http_response_code(500);
-            echo json_encode(['mensagem' => 'Erro ao desativar autor.']);
-        }
+{
+    $autorModel = new Autores();
+
+    if ($autorModel->desativarAutor($id)) {
+        $_SESSION['mensagem'] = 'Autor desativado com sucesso.';
+        $_SESSION['tipo-msg'] = 'sucesso';
+    } else {
+        $_SESSION['mensagem'] = 'Erro ao desativar o autor.';
+        $_SESSION['tipo-msg'] = 'erro';
     }
+
+    header('Location: ' . BASE_URL . 'autor/listar');
+    exit;
+}
+
 
     public function editar($id)
     {

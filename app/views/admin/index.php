@@ -124,7 +124,7 @@
           <!--begin::Sidebar Menu-->
           <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="http://localhost/sistema/public/admin" class="nav-link">
+              <a href="http://localhost/sistema-LivrariaBooksAndFun/public/admin" class="nav-link">
                 <i class="nav-icon bi bi-palette"></i>
                 <p>Dashboard</p>
               </a>
@@ -141,27 +141,24 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="http://localhost/sistema-LivrariaBooksAndFun/public/venda/listar" class="nav-link">
-                    <p>📢 Vendas</p>
+                    <p>Vendas</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <p>📰 Blog</p>
+                  <a href="http://localhost/sistema-LivrariaBooksAndFun/public/venda/itens_venda/listar" class="nav-link">
+                    <p>Controle de vendas</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://localhost/sistema-LivrariaBooksAndFun/public/livro/listar" class="nav-link">
-                    <p>📰Livros</p>
+                    <p>Controle de Livros</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="http://localhost/sistema-LivrariaBooksAndFun/public/serie/listar" class="nav-link">
-                    <p>📰Séries</p>
-                  </a>
+              
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <p>🎥 Vídeos </p>
+                  <a href="http://localhost/sistema-LivrariaBooksAndFun/public/livro/estoque" class="nav-link">
+                    <p>Controle de estoque</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -171,24 +168,24 @@
                 </li>
               </ul>
             </li>
-
-            <li class="nav-header">Clientes e Contatos</li>
+            <li class="nav-header">Clientes</li>
             <li class="nav-item">
               <a href="http://localhost/sistema-LivrariaBooksAndFun/public/cliente/listar" class="nav-link">
                 <p>👥 Clientes</p>
               </a>
             </li>
+
+            <li class="nav-header">Front-end</li>
             <li class="nav-item">
-              <a href="dashboard" class="nav-link">
-                <p>📞 Usuários</p>
-                <a href="http://localhost/sistema-LivrariaBooksAndFun/public/usuarios/listar" class="nav-link">
+              <a href="http://localhost/sistema-LivrariaBooksAndFun/public/serie/listar" class="nav-link">
+                <p>👥 Séries</p>
               </a>
             </li>
-
-            <li class="nav-header">Serviços</li>
+            
+            
             <li class="nav-item">
-              <a href="http://localhost/sistema-LivrariaBooksAndFun/public/banner/listar" class="nav-link">
-                <p>🛠️ Serviços </p>
+              <a href="http://localhost/sistema-LivrariaBooksAndFun/public/usuarios/listar" class="nav-link">
+                <p>Usuários</p> 
               </a>
             </li>
             <li class="nav-item">

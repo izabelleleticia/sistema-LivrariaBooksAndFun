@@ -15,22 +15,29 @@ class VendaController extends Controller
     
             $vendaModel = new Venda();
     
-            // Aqui já insere a venda e os itens
+            // Insere a venda e os itens
             $id_venda = $vendaModel->adicionarVendaComItens($dadosVenda, $_POST['itens_venda']);
     
             if ($id_venda) {
+                // Atualiza o estoque
+                $livroModel = new Livro();
+                $itensVendidos = [];
+                foreach ($_POST['itens_venda'] as $item) {
+                    $itensVendidos[] = [
+                        'id_livro' => $item['id_livro'],
+                        'quantidade' => $item['quantidade']
+                    ];
+                }
+                $livroModel->atualizarEstoqueAposVenda($itensVendidos);
+    
                 $_SESSION['mensagem'] = "Venda e itens adicionados com sucesso!";
                 $_SESSION['tipo-msg'] = "sucesso";
                 header('Location: ' . BASE_URL . 'venda/listar');
                 exit;
-            } else {
-                $_SESSION['mensagem'] = "Erro ao adicionar venda!";
-                $_SESSION['tipo-msg'] = "erro";
-                header('Location: ' . BASE_URL . 'venda/adicionar');
-                exit;
             }
         }
     
+        // ESSA PARTE AGORA ESTÁ FORA DO IF
         $clientesModel = new Clientes();
         $livroModel = new Livro();
         $dados['clientes'] = $clientesModel->getClientes();

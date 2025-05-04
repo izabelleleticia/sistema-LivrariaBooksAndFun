@@ -18,7 +18,7 @@ class Autores extends Model
     // Método para desativar um autor (marcar como inativo)
     public function desativarAutor($id)
     {
-        $sql = "UPDATE tbl_autores SET status = 'inativo' WHERE id_autor = :id";
+        $sql = "delete from tbl_autores where id_autor = :id";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([':id' => $id]);
     }

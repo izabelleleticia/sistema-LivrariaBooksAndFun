@@ -114,7 +114,11 @@
         <?php foreach ($vendas as $linha): ?>
             <tr>
                 <td scope="col"><?php echo $linha['nome_cliente']; ?></td>
-                <td scope="col"><?php echo $linha['data_venda']; ?></td>
+                <td>
+                    <?= !empty($livro['data_venda']) 
+                        ? date('d/m/Y', strtotime($linha['data_venda'])) 
+                        : 'Sem data' ?>
+                </td>
                 <td scope="col"><?php echo 'R$ ' . number_format($linha['valor_total'], 2, ',', '.'); ?></td>
                 <td scope="col"><?php echo $linha['forma_pagamento']; ?></td>
                 

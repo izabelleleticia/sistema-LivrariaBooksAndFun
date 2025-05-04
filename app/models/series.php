@@ -133,7 +133,19 @@ INNER JOIN (
         return $stmt->execute();
     }
 
+    public function AdicionarSerie($dados)
+{
+    $sql = "INSERT INTO tbl_series (nome_serie) VALUES (:nome_serie)";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':nome_serie', $dados['nome_serie'], PDO::PARAM_STR);
     
+    if ($stmt->execute()) {
+        return $this->db->lastInsertId(); // retorna o id da nova série
+    }
+
+    return false; // erro ao inserir
+}
+
 
     // public function getImgStreamingPorId($id){
     //     $sql = "SELECT logo_streaming FROM tbl_streaming WHERE id_streaming = :id ORDER BY RAND()";

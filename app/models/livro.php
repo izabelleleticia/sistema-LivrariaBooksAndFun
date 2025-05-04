@@ -38,7 +38,14 @@ class Livro extends Model
 
     public function getInformacoesLivros()
     {
-        $sql = "SELECT l.id_livros, l.titulo_livros, l.imagem, g.descricao_genero, l.ano_publicacao, l.preco, l.estoque, e.nome_editora FROM tbl_livros AS l INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero LEFT JOIN tbl_editoras AS e ON l.id_editora = e.id_editora order by titulo_livros";
+        $sql = "SELECT l.id_livros, l.titulo_livros, l.imagem, g.descricao_genero, 
+       l.ano_publicacao, l.preco, l.estoque, e.nome_editora 
+FROM tbl_livros AS l 
+INNER JOIN tbl_generos AS g ON l.id_genero = g.id_genero 
+LEFT JOIN tbl_editoras AS e ON l.id_editora = e.id_editora 
+WHERE l.estoque <> 0 
+ORDER BY l.titulo_livros;
+";
         // Prepara a consulta SQL
         $stmt = $this->db->prepare($sql);
 
@@ -48,6 +55,26 @@ class Livro extends Model
         // Retorna todos os resultados encontrados (fetchAll) como um array associativo
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function atualizarEstoqueAposVenda($itensVendidos)
+{
+    foreach ($itensVendidos as $item) {
+        $idLivro = $item['id_livro'];
+        $quantidadeVendida = $item['quantidade'];
+
+        $stmt = $this->db->prepare("UPDATE tbl_livros 
+                                    SET estoque = estoque - :quantidade 
+                                    WHERE id_livros = :id_livro AND estoque >= :quantidade");
+        $stmt->bindParam(':quantidade', $quantidadeVendida, PDO::PARAM_INT);
+        $stmt->bindParam(':id_livro', $idLivro, PDO::PARAM_INT);
+
+        if (!$stmt->execute()) {
+            return false; // Se falhar, interrompe o processo
+        }
+    }
+
+    return true; // Tudo atualizado com sucesso
+}
+
    
 
     public function editarLivro($dados)
@@ -251,5 +278,11 @@ class Livro extends Model
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-}
+    public function listarLivrosComEstoqueBaixo()
+    {
+        $sql = "SELECT * FROM tbl_livros WHERE estoque < 10";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    }
