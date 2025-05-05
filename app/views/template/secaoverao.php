@@ -1,7 +1,7 @@
 <section class="secaoVerao">
     <div class="linha"></div>
     <header>
-        <?php var_dump($seriesHome[0]['id_serie'])?>
+        <!-- <?php var_dump($seriesHome[0]['id_serie'])?> -->
         <h1>Quando um livro é bom demais... ele ganha as telas.</h1>
         <!-- Acessando corretamente o primeiro elemento de $seriesHome -->
         <h1><?php echo $seriesHome[0]['nome_serie']; ?></h1>
@@ -34,9 +34,9 @@
     </div>
 </section>
 
-<h2>Explore os livros que deram origem às adaptações, seja na TV ou no cinema.</h2>
+<!-- <h2>Explore os livros que deram origem às adaptações, seja na TV ou no cinema.</h2> -->
 <section class="teste">
-    <!-- <?php var_dump($livro)?> -->
+
     <?php foreach (($dados['seriesHome']) as $livro): ?>
         <article class="livro-item">
             <div class="infos">

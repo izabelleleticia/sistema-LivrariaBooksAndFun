@@ -171,14 +171,14 @@
             <li class="nav-header">Clientes</li>
             <li class="nav-item">
               <a href="http://localhost/sistema-LivrariaBooksAndFun/public/cliente/listar" class="nav-link">
-                <p>👥 Clientes</p>
+                <p>Clientes</p>
               </a>
             </li>
 
             <li class="nav-header">Front-end</li>
             <li class="nav-item">
               <a href="http://localhost/sistema-LivrariaBooksAndFun/public/serie/listar" class="nav-link">
-                <p>👥 Séries</p>
+                <p>Séries</p>
               </a>
             </li>
             
@@ -190,7 +190,7 @@
             </li>
             <li class="nav-item">
               <a href="http://localhost/sistema-LivrariaBooksAndFun/public/venda/itens_venda/listar" class="nav-link">
-                <p>🎯 Imagens</p>
+                <p>Imagens</p>
               </a>
             </li>
 

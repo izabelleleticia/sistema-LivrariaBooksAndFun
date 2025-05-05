@@ -96,7 +96,7 @@
             <!--end::Col-->
           </div>
           <!--end::Row-->
-<a href="http://localhost/sistema-LivrariaBooksAndFun/public/venda/adicionar/"><button>Cadastrar venda</button></a>
+<a href="http://localhost/sistema-LivrariaBooksAndFun/public/venda/adicionar/"><button class="btn btn-primary">Cadastrar venda</button></a>
 <table class="table table-dark table-striped">
     <thead>
         <tr>

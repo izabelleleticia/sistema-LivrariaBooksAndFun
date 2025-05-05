@@ -55,27 +55,54 @@ class UsuariosController extends Controller
         $this->carregarViews('admin/index', $dados);
     }
     
-    public function uploadFoto($file, $nome)
-    {
-        $dirRelativo = 'usuarios/';
-        $dirAbsoluto = 'C:/xampp/htdocs/sistema-LivrariaBooksAndFun/public/uploads/' . $dirRelativo;
+    // public function uploadFoto($file, $nome)
+    // {
+    //     $dirRelativo = 'usuarios/';
+    //     $dirAbsoluto = 'C:/xampp/htdocs/sistema-LivrariaBooksAndFun/public/uploads/' . $dirRelativo;
     
-        if (!file_exists($dirAbsoluto)) {
-            mkdir($dirAbsoluto, 0755, true);
+    //     if (!file_exists($dirAbsoluto)) {
+    //         mkdir($dirAbsoluto, 0755, true);
+    //     }
+    
+    //     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+    //     $nome = preg_replace('/[^a-zA-Z0-9-_]/', '_', $nome);
+    //     $nome_foto = uniqid() . '_' . $nome . '.' . $ext;
+    
+    //     if (move_uploaded_file($file['tmp_name'], $dirAbsoluto . $nome_foto)) {
+    //         // Salva no banco apenas o caminho relativo (para exibição na web)
+    //         return $dirRelativo . $nome_foto;
+    //     }
+    
+    //     return false;
+    // }
+     public function uploadFoto($file, $nome)
+    {
+        // Caminho absoluto para a pasta onde as imagens serão salvas
+        $dir = 'C:/xampp/htdocs/sistema-LivrariaBooksAndFun/public/uploads/usuarios/';
+    
+        // Verifica se o diretório existe, caso contrário, cria o diretório
+        if (!file_exists($dir)) {
+            mkdir($dir, 0755, true);
         }
     
+        // Pega a extensão do arquivo
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+    
+        // Remove espaços e caracteres especiais do nome
         $nome = preg_replace('/[^a-zA-Z0-9-_]/', '_', $nome);
+    
+        // Gera um nome único para o arquivo
         $nome_foto = uniqid() . '_' . $nome . '.' . $ext;
     
-        if (move_uploaded_file($file['tmp_name'], $dirAbsoluto . $nome_foto)) {
-            // Salva no banco apenas o caminho relativo (para exibição na web)
-            return $dirRelativo . $nome_foto;
+        // Move o arquivo para o diretório desejado
+        if (move_uploaded_file($file['tmp_name'], $dir . $nome_foto)) {
+            // Retorna o caminho relativo da imagem, para salvar no banco
+            return 'uploads/usuarios/' . $nome_foto;
         }
     
+        // Caso não consiga mover o arquivo, retorna false
         return false;
     }
-    
     
     
     

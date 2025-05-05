@@ -136,79 +136,155 @@ class LivroController extends Controller
 
 
     }
-
     public function adicionar()
     {
         // Faz o upload da imagem e adiciona o caminho ao array $dados
         $imagemCaminho = null;
         if (!empty($_FILES['imagem']['name'])) {
-            $imagemCaminho = $this->uploadFoto($_FILES['imagem'], 'usuario_');
+            $imagemCaminho = $this->uploadFoto($_FILES['imagem'], 'livro_');
         }
-    
+
         // Pega os dados do formulário
-        $dadosUsuario = array(
-            'nome_usuario' => filter_input(INPUT_POST, 'nome_usuario', FILTER_SANITIZE_SPECIAL_CHARS),
-            'email_usuario' => filter_input(INPUT_POST, 'email_usuario', FILTER_SANITIZE_EMAIL),
-            'senha_usuario' => password_hash(filter_input(INPUT_POST, 'senha_usuario', FILTER_SANITIZE_STRING), PASSWORD_DEFAULT),
+        $dados = array(
+            'titulo_livros' => filter_input(INPUT_POST, 'titulo_livros', FILTER_SANITIZE_SPECIAL_CHARS),
+            'descricao_livro' => filter_input(INPUT_POST, 'descricao_livro', FILTER_SANITIZE_SPECIAL_CHARS),
             'imagem' => $imagemCaminho,
+            'id_autor' => filter_input(INPUT_POST, 'id_autor', FILTER_SANITIZE_NUMBER_INT),
+            'descricao_genero' => filter_input(INPUT_POST, 'descricao_genero', FILTER_SANITIZE_SPECIAL_CHARS),
+            'nome_autor' => filter_input(INPUT_POST, 'nome_autor', FILTER_SANITIZE_SPECIAL_CHARS),
+            'ano_publicacao' => filter_input(INPUT_POST, 'ano_publicacao', FILTER_SANITIZE_NUMBER_INT),
+            'preco' => filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+            'estoque' => filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT),
+            'nome_editora' => filter_input(INPUT_POST, 'nome_editora', FILTER_SANITIZE_SPECIAL_CHARS),
+            'nome_serie' => filter_input(INPUT_POST, 'nome_serie', FILTER_SANITIZE_SPECIAL_CHARS),
+            'id_serie' => filter_input(INPUT_POST, 'id_serie', FILTER_SANITIZE_NUMBER_INT)
         );
-    
-        // Debug: Verifica os dados antes de fazer a inserção
-        var_dump($dadosUsuario);  // Exibe os dados que vão para o banco
-        exit;  // Para o código aqui para ver os resultados no navegador
-    
-        // Validação simples para evitar campos nulos
-        if (empty($dadosUsuario['nome_usuario']) || empty($dadosUsuario['email_usuario']) || empty($dadosUsuario['senha_usuario'])) {
-            $_SESSION['mensagem'] = 'Por favor, preencha todos os campos obrigatórios.';
-            $_SESSION['tipo-msg'] = 'erro';
+
+        $livroModel = new Livro();
+
+        // Chama o método de adicionar no modelo
+        if ($livroModel->adicionar($dados)) {
+            $_SESSION['mensagem'] = 'Livro adicionado com sucesso';
+            $_SESSION['tipo-msg'] = 'sucesso';
+            header('Location: ' . BASE_URL . 'livro/listar');
+            exit;
         } else {
-            // Insere no banco
-            $usuarioModel = new Usuario();
-            if ($usuarioModel->adicionar($dadosUsuario)) {
-                $_SESSION['mensagem'] = 'Usuário adicionado com sucesso!';
-                $_SESSION['tipo-msg'] = 'sucesso';
-                header('Location: ' . BASE_URL . 'usuarios/listar');
-                exit;
-            } else {
-                $_SESSION['mensagem'] = 'Erro ao adicionar o usuário.';
-                $_SESSION['tipo-msg'] = 'erro';
-            }
+            $_SESSION['mensagem'] = 'Erro ao adicionar o livro';
+            $_SESSION['tipo-msg'] = 'erro';
         }
-    
-        // Carrega a view (independente se for GET ou POST)
-        $dados['titulo'] = 'Adicionar Usuário';
-        $dados['conteudo'] = 'admin/usuario/adicionar';
+
+        // Buscar as editoras
+        $editoraModel = new Editora();
+        $dados['editoras'] = $editoraModel->getEditora(); // Agora retorna todas as editoras
+
+        $autorModel = new Autor();
+        $dados['autores'] = $autorModel->getAutores();
+
+        $generoModel = new Genero();
+        $dados['generos'] = $generoModel->getGenero();
+
+        $serieModel = new Series();
+        $dados['series'] = $serieModel->getSerie();
+
+        // var_dump(value: $dados);
+
+        $dados['conteudo'] = 'admin/livro/adicionar';
         $this->carregarViews('admin/index', $dados);
     }
-    
+
     public function uploadFoto($file, $nome)
     {
-        // Caminho absoluto para a pasta onde as imagens serão salvas
-        $dir = 'C:/xampp/htdocs/sistema-LivrariaBooksAndFun/public/uploads/usuarios/';
-    
-        // Verifica se o diretório existe, caso contrário, cria o diretório
+        $dir = 'uploads/livros/';
         if (!file_exists($dir)) {
             mkdir($dir, 0755, true);
         }
-    
-        // Pega a extensão do arquivo
+
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-    
-        // Remove espaços e caracteres especiais do nome
+
+        // Remove espaços e caracteres especiais
         $nome = preg_replace('/[^a-zA-Z0-9-_]/', '_', $nome);
-    
-        // Gera um nome único para o arquivo
+
         $nome_foto = uniqid() . '_' . $nome . '.' . $ext;
-    
-        // Move o arquivo para o diretório desejado
+
         if (move_uploaded_file($file['tmp_name'], $dir . $nome_foto)) {
-            // Retorna o caminho relativo da imagem, para salvar no banco
-            return 'uploads/usuarios/' . $nome_foto;
+            return 'livros/' . $nome_foto;
         }
-    
-        // Caso não consiga mover o arquivo, retorna false
+
         return false;
     }
+
+    // public function adicionar()
+    // {
+    //     // Faz o upload da imagem e adiciona o caminho ao array $dados
+    //     $imagemCaminho = null;
+    //     if (!empty($_FILES['imagem']['name'])) {
+    //         $imagemCaminho = $this->uploadFoto($_FILES['imagem'], 'usuario_');
+    //     }
+    
+    //     // Pega os dados do formulário
+    //     $dadosUsuario = array(
+    //         'nome_usuario' => filter_input(INPUT_POST, 'nome_usuario', FILTER_SANITIZE_SPECIAL_CHARS),
+    //         'email_usuario' => filter_input(INPUT_POST, 'email_usuario', FILTER_SANITIZE_EMAIL),
+    //         'senha_usuario' => password_hash(filter_input(INPUT_POST, 'senha_usuario', FILTER_SANITIZE_STRING), PASSWORD_DEFAULT),
+    //         'imagem' => $imagemCaminho,
+    //     );
+    
+    //     // Debug: Verifica os dados antes de fazer a inserção
+    //     // var_dump($dadosUsuario);  // Exibe os dados que vão para o banco
+    //     exit;  // Para o código aqui para ver os resultados no navegador
+    
+    //     // Validação simples para evitar campos nulos
+    //     if (empty($dadosUsuario['nome_usuario']) || empty($dadosUsuario['email_usuario']) || empty($dadosUsuario['senha_usuario'])) {
+    //         $_SESSION['mensagem'] = 'Por favor, preencha todos os campos obrigatórios.';
+    //         $_SESSION['tipo-msg'] = 'erro';
+    //     } else {
+    //         // Insere no banco
+    //         $usuarioModel = new Usuario();
+    //         if ($usuarioModel->adicionar($dadosUsuario)) {
+    //             $_SESSION['mensagem'] = 'Usuário adicionado com sucesso!';
+    //             $_SESSION['tipo-msg'] = 'sucesso';
+    //             header('Location: ' . BASE_URL . 'usuarios/listar');
+    //             exit;
+    //         } else {
+    //             $_SESSION['mensagem'] = 'Erro ao adicionar o usuário.';
+    //             $_SESSION['tipo-msg'] = 'erro';
+    //         }
+    //     }
+    
+    //     // Carrega a view (independente se for GET ou POST)
+    //     $dados['titulo'] = 'Adicionar Usuário';
+    //     $dados['conteudo'] = 'admin/usuario/adicionar';
+    //     $this->carregarViews('admin/index', $dados);
+    // }
+
+    // public function uploadFoto($file, $nome)
+    // {
+    //     // Caminho absoluto para a pasta onde as imagens serão salvas
+    //     $dir = 'C:/xampp/htdocs/sistema-LivrariaBooksAndFun/public/uploads/usuarios/';
+    
+    //     // Verifica se o diretório existe, caso contrário, cria o diretório
+    //     if (!file_exists($dir)) {
+    //         mkdir($dir, 0755, true);
+    //     }
+    
+    //     // Pega a extensão do arquivo
+    //     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+    
+    //     // Remove espaços e caracteres especiais do nome
+    //     $nome = preg_replace('/[^a-zA-Z0-9-_]/', '_', $nome);
+    
+    //     // Gera um nome único para o arquivo
+    //     $nome_foto = uniqid() . '_' . $nome . '.' . $ext;
+    
+    //     // Move o arquivo para o diretório desejado
+    //     if (move_uploaded_file($file['tmp_name'], $dir . $nome_foto)) {
+    //         // Retorna o caminho relativo da imagem, para salvar no banco
+    //         return 'uploads/usuarios/' . $nome_foto;
+    //     }
+    
+    //     // Caso não consiga mover o arquivo, retorna false
+    //     return false;
+    // }
     
 
     public function desativar($id)
