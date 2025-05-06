@@ -40,27 +40,17 @@
 
 
 </section>
-<div class="botoes-1">
 
-    <div class="WhatsApp">
-      
-       
-        <?php 
-        $mensagem = "Olá! Tenho interesse no livro: " . $livros['titulo_livros'];
-     
-        
-        $mensagem = "Olá! Tenho interesse no livro: " . $livros['titulo_livros'];
-        $link_whatsapp = "https://wa.me/5511934922824?text=" . urlencode($mensagem);
-        ?>
-
-        <a href="<?= $link_whatsapp ?>" target="_blank">Fale no WhatsApp</a>
-
-        
-        <a href="<?= $link_whatsapp ?>" target="_blank">
-            <img src="<?php echo BASE_URL; ?>assets/img/whatsapp.png" width="50" alt="">
-        </a>
+<!-- Botão do WhatsApp flutuante com mensagem -->
+<div class="whatsapp-container">
+    <div class="mensagem-whatsapp">
+        Deseja comprar? Entre em contato pelo WhatsApp!
     </div>
+    <a href="<?= $link_whatsapp ?>" class="whatsapp-flutuante" target="_blank">
+        <img src="<?php echo BASE_URL; ?>assets/img/whatsapp.png" alt="WhatsApp">
+    </a>
 </div>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     var modal = document.getElementById("modalImagem");

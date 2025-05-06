@@ -223,7 +223,7 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        padding-left: 378px;
+        padding-left: 246px;
 
     }
 
@@ -440,6 +440,7 @@
         justify-content: center;
     }
 
+    /* 
     .secaoVerao .imagem {
         display: flex;
         justify-content: center;
@@ -452,7 +453,38 @@
         image-rendering: auto;
         margin-right: 160px;
         margin-bottom: 5px;
+    } */
+    .imagem {
+        width: 100%;
+        max-width: 746px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+    .imagem a {
+        display: block;
+    }
+
+    .imagem img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 16px;
+        transition: transform 0.4s ease;
+    }
+
+    .imagem:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .imagem:hover img {
+        transform: scale(1.03);
+    }
+
 
     .secaoSerie {
         display: flex;
@@ -461,7 +493,7 @@
     .background {
         background-color: #A95BBC;
         margin-top: -5px;
-        
+
         padding-top: 30px;
         /* Empurra o conteúdo para baixo sem afetar a posição da seção */
     }
@@ -472,16 +504,18 @@
         color: #ffffff;
 
     }
+
     .zoom-imagem {
         transition: transform 0.3s ease;
         cursor: pointer;
         max-width: 100%;
         height: auto;
     }
-    
+
     .zoom-imagem:hover {
         transform: scale(1.1);
     }
+
     .modal {
         display: none;
         position: fixed;
@@ -492,16 +526,16 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0,0,0,0.8);
+        background-color: rgba(0, 0, 0, 0.8);
     }
-    
+
     .modal-conteudo {
         display: block;
         margin: auto;
         max-width: 90%;
         max-height: 80%;
     }
-    
+
     .fechar {
         position: absolute;
         top: 20px;
@@ -511,8 +545,8 @@
         font-weight: bold;
         cursor: pointer;
     }
-    
-    
+
+
 
     .background .livro-item {
         display: flex;
@@ -546,6 +580,7 @@
         font-size: 20pt;
     }
 
+    /* 
     .teste {
         display: flex;
         flex-wrap: wrap;
@@ -559,20 +594,72 @@
     .livro-item {
 
         text-align: center;
-    }
+    } */
 
-    .livro-item img {
+    /* .livro-item img {
         max-width: 100%;
         height: auto;
         border-radius: 4px;
         flex: 1 1 200px;
-        /* Cresce, diminui, tamanho base */
+       
         max-width: 200px;
         background-color: #f9f9f9;
         padding: 10px;
         border-radius: 8px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    } */
+    .teste {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 127px;
+        padding: 40px 20px;
+        background-color: #fafafa;
+        border-radius: 16px;
     }
+
+    .livro-item {
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        width: 220px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        text-align: center;
+        padding-bottom: 16px;
+    }
+
+    .livro-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .livro-item .infos a img {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        display: block;
+    }
+
+    .livro-item .infos p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 15px;
+        color: #333;
+        margin: 8px 12px 0 12px;
+    }
+
+    .livro-item .infos p:first-of-type {
+        font-weight: 600;
+        font-size: 16px;
+        color: #222;
+    }
+
+    .livro-item .infos p:nth-of-type(2) {
+        color: #1ebe5b;
+        font-weight: 500;
+    }
+
 
     /* Estilo do Modal */
     .modal {
@@ -1414,83 +1501,93 @@
 
 
 
-
     .rodape {
         background-color: #8F5BBC;
         color: #fff;
-        /* Texto branco */
-        padding: 30px 90px;
-        text-align: center;
-
+        padding: 50px 30px 30px;
+        font-family: 'Inter', sans-serif;
+        position: relative;
+        z-index: 1;
     }
-
+    
     .rodape .top {
         height: 20px;
         background-color: #BB87E9;
-        margin-top: -100px
+        position: relative;
+        top: -20px;
+        z-index: 2;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
     }
-
+    
     .rodape-container {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         max-width: 1200px;
         margin: 0 auto;
+        gap: 40px;
     }
-
+    
     .rodape nav {
         flex: 1;
-        min-width: 200px;
-        margin: 10px;
+        min-width: 220px;
+        margin: 10px 0;
         text-align: left;
     }
-
+    
     .rodape h1 {
-        font-size: 15pt;
-        margin-bottom: 10px;
+        font-size: 16pt;
+        font-weight: 600;
+        margin-bottom: 15px;
     }
-
+    
     .rodape ul {
         list-style: none;
         padding: 0;
+        margin: 0;
     }
-
+    
     .rodape ul li {
         display: flex;
         align-items: center;
-        /* Alinha o ícone e o texto */
-        margin-bottom: 8px;
-        font-family: 'interRegular';
-        color: #ffffff;
-    }
-
-    .rodape ul li img {
-        width: 18px;
-        /* Tamanho uniforme dos ícones */
-        height: 18px;
-        margin-right: 8px;
-        /* Espaço entre o ícone e o texto */
-    }
-
-    .rodape a {
-        color: #ffffff;
-        font-weight: normal;
-
-    }
-
-    .rodape a:hover {
+        margin-bottom: 10px;
+        font-size: 14px;
         color: #fff;
-
+        transition: color 0.3s ease;
     }
-
+    
+    .rodape ul li:hover {
+        color: #dcdcdc;
+    }
+    
+    .rodape ul li img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    
+    .rodape a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .rodape a:hover {
+        color: #f0e6ff;
+    }
+    
     .rodape p {
         margin-top: 30px;
-        font-size: 15pt;
+        font-size: 14pt;
+        text-align: center;
         color: #ffffff;
+        width: 100%;
     }
+    
 
     /*Páginas Livro*/
-    .Colunas {
+    /* .Colunas {
         display: flex;
         justify-content: space-between;
         padding-left: 100px;
@@ -1613,9 +1710,9 @@
 
     .publicacao {
         text-align: center;
-    }
+    } */
 
-    .WhatsApp {
+    /* .WhatsApp {
         position: fixed;
         right: 203px;
         z-index: 9999;
@@ -1625,7 +1722,206 @@
         justify-content: space-evenly;
         align-items: baseline;
         flex-direction: row-reverse;
+    } */
+    .Colunas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        padding: 40px 20px;
+        font-family: 'Poppins', sans-serif;
+        background-color: #fdfdfd;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
+
+    .imgInfo {
+        flex: 1 1 300px;
+        text-align: center;
+        padding-left: 100px;
+
+    }
+
+    .imgInfo img.zoom-imagem {
+        width: 100%;
+        max-width: 189px;
+        height: 270px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .imgInfo img.zoom-imagem:hover {
+        transform: scale(1.03);
+    }
+
+    .imgInfo h3 {
+        font-size: 20px;
+        margin-top: 20px;
+        color: #444;
+    }
+
+    .imgInfo p {
+        font-size: 18px;
+        color: #1ebe5b;
+        font-weight: 600;
+    }
+
+    .quantidade {
+        background-color: #ececec;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        cursor: default;
+    }
+
+    .SobreLivro {
+        flex: 2 1 500px;
+        padding-right: 352px;
+    }
+
+    .SobreLivro h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        /* font-weight: 700; */
+        color: #222;
+    }
+
+    .SobreLivro h2 {
+        font-size: 20px;
+        color: #777;
+        margin-top: 8px;
+    }
+
+    .SobreLivro p {
+        margin-top: 15px;
+        line-height: 1.6;
+        color: #444;
+        font-size: 16px;
+    }
+
+    .EditoraePub {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .editora, .publicacao {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #fafafa;
+        padding: 12px 16px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .editora img, .publicacao img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .bold {
+        font-weight: 600;
+        color: #333;
+    }
+
+    /* Modal de imagem */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1050;
+        padding-top: 60px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-conteudo {
+        margin: auto;
+        display: block;
+        max-width: 90%;
+        max-height: 80vh;
+        border-radius: 8px;
+    }
+
+    .fechar {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .whatsapp-container {
+        position: fixed;
+        bottom: 20px;
+        right: 395px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+    }
+
+    .mensagem-whatsapp {
+        background-color: #ffffff;
+        color: #333;
+        padding: 10px 14px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        max-width: 220px;
+        text-align: center;
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    .whatsapp-flutuante {
+        width: 60px;
+        height: 60px;
+        background-color: #25D366;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .whatsapp-flutuante:hover {
+        background-color: #1ebe5b;
+        transform: scale(1.05);
+    }
+
+    .whatsapp-flutuante img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Animação opcional para a mensagem aparecer suavemente */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
 
 
 
