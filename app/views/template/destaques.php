@@ -16,11 +16,11 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="botao">
+        <!-- <div class="botao">
             <button>
                 <img src="<?php echo BASE_URL; ?>assets/img/icons8-livros-24.png" alt="Ícone">
                 Veja mais títulos
-            </button>
+            </button> -->
         </div>
     </article>
 </section>
